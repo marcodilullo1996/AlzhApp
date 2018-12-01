@@ -11,11 +11,14 @@ import MapKit
 
 class RangeViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
 
+    @IBOutlet weak var rangeTexField: UITextField!
     var locationManager: CLLocationManager!
     var userPosition: CLLocationCoordinate2D!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        rangeTexField.setBottomBorder(withColor: .black)
         
         locationManager = CLLocationManager() //INizializziamo location manager
         locationManager.delegate = self
@@ -26,6 +29,7 @@ class RangeViewController: UIViewController, MKMapViewDelegate, CLLocationManage
         // Do any additional setup after loading the view.
     }
     
+    /*
     func region(withGeotification geotification: Geotification) -> CLCircularRegion {
         // 1
         let region = CLCircularRegion(center: geotification.coordinate, radius: geotification.radius, identifier: geotification.identifier)
@@ -34,6 +38,7 @@ class RangeViewController: UIViewController, MKMapViewDelegate, CLLocationManage
         region.notifyOnExit = !region.notifyOnEntry
         return region
     }
+ */
 
     /*
     // MARK: - Navigation
@@ -46,3 +51,16 @@ class RangeViewController: UIViewController, MKMapViewDelegate, CLLocationManage
     */
 
 }
+
+/*extension UITextField {
+    func setBottomBorder(withColor color: UIColor) {
+        self.borderStyle = UITextField.BorderStyle.none
+        self.backgroundColor = UIColor.clear
+        let height: CGFloat = 1.0
+        
+        let borderLine = UIView(frame: CGRect(x: 0, y: self.frame.height - height+10, width: self.frame.width, height: height))
+        borderLine.backgroundColor = color
+        self.addSubview(borderLine)
+    }
+}*/
+

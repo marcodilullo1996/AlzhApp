@@ -44,7 +44,7 @@ extension UITextField {
         self.backgroundColor = UIColor.clear
         let height: CGFloat = 1.0
         
-        let borderLine = UIView(frame: CGRect(x: 0, y: self.frame.height - height+10, width: self.frame.width, height: height))
+        let borderLine = UIView(frame: CGRect(x: 0, y: self.frame.height - height, width: self.frame.width, height: height))
         borderLine.backgroundColor = color
         self.addSubview(borderLine)
     }
