@@ -29,16 +29,14 @@ class RangeViewController: UIViewController, MKMapViewDelegate, CLLocationManage
         // Do any additional setup after loading the view.
     }
     
-    /*
     func region(withGeotification geotification: Geotification) -> CLCircularRegion {
         // 1
         let region = CLCircularRegion(center: geotification.coordinate, radius: geotification.radius, identifier: geotification.identifier)
         // 2
-        region.notifyOnEntry = (geotification.eventType == .onEntry)
+        region.notifyOnEntry = (geotification.eventType == .onExit)
         region.notifyOnExit = !region.notifyOnEntry
         return region
     }
- */
 
     /*
     // MARK: - Navigation
