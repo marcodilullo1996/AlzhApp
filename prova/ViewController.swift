@@ -22,7 +22,6 @@ class ViewController: UIViewController {
         surnameField.setBottomBorder(withColor: .black)
         addressField.setBottomBorder(withColor: .black)
 
-
         // Do any additional setup after loading the view.
     }
     
