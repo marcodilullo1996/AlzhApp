@@ -30,6 +30,7 @@ class ViewController: UIViewController {
     {
         address = addressField.text!
         performSegue(withIdentifier: "passInformation", sender: self)
+        performSegue(withIdentifier: "passInformationTabInfo", sender: self)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

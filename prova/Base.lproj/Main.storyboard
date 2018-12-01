@@ -30,7 +30,7 @@
                                 </state>
                                 <connections>
                                     <action selector="next:" destination="BYZ-38-t0r" eventType="touchUpInside" id="fHV-3q-CX6"/>
-                                    <segue destination="v6c-Ob-uMK" kind="presentation" identifier="passInformation" id="5eK-aq-Kkr"/>
+                                    <segue destination="v6c-Ob-uMK" kind="show" id="rWy-F1-Eow"/>
                                 </connections>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fEU-gf-yxd">
@@ -125,7 +125,7 @@
         <!--Info-->
         <scene sceneID="Zti-ms-ana">
             <objects>
-                <viewController id="Ly2-Gf-Uiy" sceneMemberID="viewController">
+                <viewController id="Ly2-Gf-Uiy" customClass="InfoTabViewController" customModule="prova" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="g90-2c-IeE">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -136,7 +136,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PNc-gj-f7e" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2006" y="695"/>
+            <point key="canvasLocation" x="2005.5999999999999" y="751.57421289355329"/>
         </scene>
         <!--Range View Controller-->
         <scene sceneID="gY9-jo-pHA">
@@ -243,6 +243,7 @@
                 <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="LNd-7P-OeM" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="9nW-vw-ghX">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
@@ -254,7 +255,7 @@
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZnR-64-iPh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="946.39999999999998" y="694.90254872563719"/>
+            <point key="canvasLocation" x="945" y="752"/>
         </scene>
         <!--Options-->
         <scene sceneID="i6h-wp-KMm">
