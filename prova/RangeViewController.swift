@@ -8,35 +8,61 @@
 
 import UIKit
 import MapKit
+import CoreLocation
 
 class RangeViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
 
-    @IBOutlet weak var rangeTexField: UITextField!
+    @IBOutlet weak var rangeTextField: UITextField!
+    @IBOutlet weak var mapRange: MKMapView!
+    
     var locationManager: CLLocationManager!
     var userPosition: CLLocationCoordinate2D!
+    
+    var addressLocation = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        rangeTexField.setBottomBorder(withColor: .black)
+        rangeTextField.setBottomBorder(withColor: .black)
         
         locationManager = CLLocationManager() //INizializziamo location manager
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters //Accuratezza desiderata
         locationManager.requestAlwaysAuthorization()
         locationManager.startUpdatingLocation()
+        
+        //addressLocation =
 
         // Do any additional setup after loading the view.
     }
     
-    func region(withGeotification geotification: Geotification) -> CLCircularRegion {
-        // 1
-        let region = CLCircularRegion(center: geotification.coordinate, radius: geotification.radius, identifier: geotification.identifier)
-        // 2
-        region.notifyOnEntry = (geotification.eventType == .onExit)
-        region.notifyOnExit = !region.notifyOnEntry
-        return region
+    @IBAction func showRegion(_ sender: Any)
+    {
+        //var coordinates: CLLocationCoordinate2D
+        var geocoder = CLGeocoder()
+        geocoder.geocodeAddressString(addressLocation) {
+            placemarks, error in
+            let placemark = placemarks?.first
+            let coordinates = placemark?.location?.coordinate
+            //coordinate = placemark.location!.coordinate
+            //let lat = placemark?.location?.coordinate.latitude
+            //let lon = placemark?.location?.coordinate.longitude
+            print("Coordinate: \(coordinates)")
+            
+            let region = CLCircularRegion(center: coordinates!, radius: 100000, identifier: "geofence") // radius: 200
+            
+            
+        }
+        
+        mapRange.removeOverlays(mapRange.overlays)
+        locationManager.startMonitoring(for: region)
+        let circle = MKCircle(center: coordinates!, radius: region.radius)
+        mapRange.addOverlay(circle)
+        
+        
+        
     }
+    
 
     /*
     // MARK: - Navigation

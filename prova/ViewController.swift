@@ -14,6 +14,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var surnameField: UITextField!
     @IBOutlet weak var addressField: UITextField!
     
+    var address = ""
     
     
     override func viewDidLoad() {
@@ -25,7 +26,16 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
-
+    @IBAction func next(_ sender: Any)
+    {
+        address = addressField.text!
+        performSegue(withIdentifier: "passInformation", sender: self)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        var vc = segue.destination as! RangeViewController
+        vc.addressLocation = self.address
+    }
     /*
     // MARK: - Navigation
 
