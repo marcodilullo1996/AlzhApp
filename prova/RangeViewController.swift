@@ -11,13 +11,7 @@ import MapKit
 import CoreLocation
 
 
-struct Coord:
-{
-    var lon : Float
-    var lat : Float
-}
-
-class RangeViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
+class RangeViewController: UIViewController, CLLocationManagerDelegate {
 
     @IBOutlet weak var rangeTextField: UITextField!
     @IBOutlet weak var mapRange: MKMapView!
@@ -45,22 +39,6 @@ class RangeViewController: UIViewController, MKMapViewDelegate, CLLocationManage
     
     @IBAction func showRegion(_ sender: Any)
     {
-        let convertAddressInCoordinate(address: addressLocation)
-        
-        print("Coordinate: \(placemarks?.location!)")
-
-        /*
-        let region = CLCircularRegion(center: coordinates!, radius: 10000, identifier: "geofence") // radius: 200
-        //mapRange.removeOverlays(mapRange.overlays)
-        //locationManager.startMonitoring(for: region)
-        let circle = MKCircle(center: coordinates!, radius: region.radius)
-        mapRange.addOverlay(circle)
-        */
-        
-    }
-    
-    func convertAddressInCoordinate(address: String) -> CLLocationCoordinate2D
-    {
         var geocoder = CLGeocoder()
         var coordinates: CLLocationCoordinate2D?
         geocoder.geocodeAddressString(addressLocation) {
@@ -68,16 +46,18 @@ class RangeViewController: UIViewController, MKMapViewDelegate, CLLocationManage
             let placemark = placemarks?.first
             coordinates = placemark?.location?.coordinate
             
-            //coordinate = placemark.location!.coordinate
-            //let lat = placemark?.location?.coordinate.latitude
-            //let lon = placemark?.location?.coordinate.longitude
+            print("Coordinate: \(coordinates!)")
             
-            
+            let region = CLCircularRegion(center: coordinates!, radius: 10000, identifier: "geofence") // radius: 200
+            self.mapRange.removeOverlays(self.mapRange.overlays)
+            self.locationManager.startMonitoring(for: region)
+            let circle = MKCircle(center: coordinates!, radius: region.radius)
+            self.mapRange.addOverlay(circle)
+
         }
-        return coordinates!
         
     }
-
+    
     /*
     // MARK: - Navigation
 
@@ -102,3 +82,13 @@ class RangeViewController: UIViewController, MKMapViewDelegate, CLLocationManage
     }
 }*/
 
+extension RangeViewController: MKMapViewDelegate {
+    func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
+        guard let circleOverlay = overlay as? MKCircle else { return MKOverlayRenderer() }
+        let circleRenderer = MKCircleRenderer(circle: circleOverlay)
+        circleRenderer.strokeColor = .red
+        circleRenderer.fillColor = .red
+        circleRenderer.alpha = 0.5
+        return circleRenderer
+    }
+}
