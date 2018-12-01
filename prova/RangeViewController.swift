@@ -10,6 +10,13 @@ import UIKit
 import MapKit
 import CoreLocation
 
+
+struct Coord:
+{
+    var lon : Float
+    var lat : Float
+}
+
 class RangeViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
 
     @IBOutlet weak var rangeTextField: UITextField!
@@ -38,31 +45,38 @@ class RangeViewController: UIViewController, MKMapViewDelegate, CLLocationManage
     
     @IBAction func showRegion(_ sender: Any)
     {
-        //var coordinates: CLLocationCoordinate2D
-        var geocoder = CLGeocoder()
-        geocoder.geocodeAddressString(addressLocation) {
-            placemarks, error in
-            let placemark = placemarks?.first
-            let coordinates = placemark?.location?.coordinate
-            //coordinate = placemark.location!.coordinate
-            //let lat = placemark?.location?.coordinate.latitude
-            //let lon = placemark?.location?.coordinate.longitude
-            print("Coordinate: \(coordinates)")
-            
-            let region = CLCircularRegion(center: coordinates!, radius: 100000, identifier: "geofence") // radius: 200
-            
-            
-        }
+        let convertAddressInCoordinate(address: addressLocation)
         
-        mapRange.removeOverlays(mapRange.overlays)
-        locationManager.startMonitoring(for: region)
+        print("Coordinate: \(placemarks?.location!)")
+
+        /*
+        let region = CLCircularRegion(center: coordinates!, radius: 10000, identifier: "geofence") // radius: 200
+        //mapRange.removeOverlays(mapRange.overlays)
+        //locationManager.startMonitoring(for: region)
         let circle = MKCircle(center: coordinates!, radius: region.radius)
         mapRange.addOverlay(circle)
-        
-        
+        */
         
     }
     
+    func convertAddressInCoordinate(address: String) -> CLLocationCoordinate2D
+    {
+        var geocoder = CLGeocoder()
+        var coordinates: CLLocationCoordinate2D?
+        geocoder.geocodeAddressString(addressLocation) {
+            placemarks, error in
+            let placemark = placemarks?.first
+            coordinates = placemark?.location?.coordinate
+            
+            //coordinate = placemark.location!.coordinate
+            //let lat = placemark?.location?.coordinate.latitude
+            //let lon = placemark?.location?.coordinate.longitude
+            
+            
+        }
+        return coordinates!
+        
+    }
 
     /*
     // MARK: - Navigation
