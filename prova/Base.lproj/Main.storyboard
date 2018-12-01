@@ -28,6 +28,9 @@
                                 <state key="normal" title="Save">
                                     <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
+                                <connections>
+                                    <segue destination="v6c-Ob-uMK" kind="show" id="LKX-LW-hAE"/>
+                                </connections>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fEU-gf-yxd">
                                 <rect key="frame" x="54" y="221" width="265" height="31"/>
@@ -118,21 +121,26 @@
             </objects>
             <point key="canvasLocation" x="944.79999999999995" y="26.53673163418291"/>
         </scene>
-        <!--View Controller-->
+        <!--Range View Controller-->
         <scene sceneID="gY9-jo-pHA">
             <objects>
-                <viewController id="v6c-Ob-uMK" sceneMemberID="viewController">
+                <viewController id="v6c-Ob-uMK" customClass="RangeViewController" customModule="prova" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="2sW-7N-P5u">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Icona" translatesAutoresizingMaskIntoConstraints="NO" id="Tnf-9m-2di">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Icona" translatesAutoresizingMaskIntoConstraints="NO" id="Tnf-9m-2di">
                                 <rect key="frame" x="130" y="37" width="116" height="75"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="75" id="UTU-S3-sYW"/>
+                                    <constraint firstAttribute="width" constant="116" id="aAN-zT-ucO"/>
+                                </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="AlzhApp" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="521-LM-SM7">
-                                <rect key="frame" x="129" y="120" width="116" height="61"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="juJ-26-8Dm">
+                                <rect key="frame" x="0.0" y="295" width="375" height="372"/>
+                            </mapView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="AlzhApp" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="521-LM-SM7">
+                                <rect key="frame" x="130" y="120" width="116" height="61"/>
                                 <fontDescription key="fontDescription" name="Zapfino" family="Zapfino" pointSize="18"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -140,12 +148,26 @@
                             </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="R1z-89-Sqo" firstAttribute="trailing" secondItem="Tnf-9m-2di" secondAttribute="trailing" constant="129" id="2B5-yR-W1p"/>
+                            <constraint firstItem="R1z-89-Sqo" firstAttribute="trailing" secondItem="521-LM-SM7" secondAttribute="trailing" constant="129" id="5Vd-iV-gPL"/>
+                            <constraint firstItem="Tnf-9m-2di" firstAttribute="leading" secondItem="R1z-89-Sqo" secondAttribute="leading" constant="130" id="6aW-bg-WHz"/>
+                            <constraint firstItem="juJ-26-8Dm" firstAttribute="top" secondItem="521-LM-SM7" secondAttribute="bottom" constant="114" id="7Pq-1K-Bxe"/>
+                            <constraint firstItem="Tnf-9m-2di" firstAttribute="top" secondItem="R1z-89-Sqo" secondAttribute="top" constant="17" id="Yfi-z8-VZ0"/>
+                            <constraint firstItem="521-LM-SM7" firstAttribute="top" secondItem="Tnf-9m-2di" secondAttribute="bottom" constant="8" id="ZkQ-3v-LlZ"/>
+                            <constraint firstItem="juJ-26-8Dm" firstAttribute="bottom" secondItem="R1z-89-Sqo" secondAttribute="bottom" id="jav-0A-fCP"/>
+                            <constraint firstItem="juJ-26-8Dm" firstAttribute="trailing" secondItem="R1z-89-Sqo" secondAttribute="trailing" id="loh-tK-b9f"/>
+                            <constraint firstItem="juJ-26-8Dm" firstAttribute="leading" secondItem="R1z-89-Sqo" secondAttribute="leading" id="qap-jf-9LE"/>
+                            <constraint firstItem="521-LM-SM7" firstAttribute="leading" secondItem="R1z-89-Sqo" secondAttribute="leading" constant="130" id="rFf-gN-t5H"/>
+                            <constraint firstItem="juJ-26-8Dm" firstAttribute="top" secondItem="521-LM-SM7" secondAttribute="bottom" constant="114" id="wGd-y8-5yp"/>
+                            <constraint firstItem="521-LM-SM7" firstAttribute="top" secondItem="Tnf-9m-2di" secondAttribute="bottom" constant="8" id="zCm-5M-pEw"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="R1z-89-Sqo"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="d4E-po-zna" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2036" y="27"/>
+            <point key="canvasLocation" x="2005.5999999999999" y="26.53673163418291"/>
         </scene>
     </scenes>
     <resources>
