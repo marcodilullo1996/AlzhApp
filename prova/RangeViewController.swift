@@ -48,11 +48,23 @@ class RangeViewController: UIViewController, CLLocationManagerDelegate {
             
             print("Coordinate: \(coordinates!)")
             
-            let region = CLCircularRegion(center: coordinates!, radius: 10000, identifier: "geofence") // radius: 200
+            var region: MKCoordinateRegion = self.mapRange.region
+            region.center.latitude = (placemark?.location?.coordinate.latitude)!
+            region.center.longitude = (placemark?.location?.coordinate.longitude)!
+            
+            region.span = MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01)
+            
+            self.mapRange.setRegion(region, animated: true)
+            //self.mapRange.addAnnotation(placemark)
+            
+            print("Coordinate: \(coordinates!)")
+            
+            /*let region = CLCircularRegion(center: coordinates!, radius: 10000, identifier: "geofence") // radius: 200
             self.mapRange.removeOverlays(self.mapRange.overlays)
             self.locationManager.startMonitoring(for: region)
             let circle = MKCircle(center: coordinates!, radius: region.radius)
             self.mapRange.addOverlay(circle)
+ */
 
         }
         
