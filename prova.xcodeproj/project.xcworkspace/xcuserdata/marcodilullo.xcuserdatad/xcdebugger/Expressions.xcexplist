@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<VariablesViewState
+   version = "1.0">
+   <ContextStates>
+      <ContextState
+         contextName = "closure #2 in RangeViewController.showRegion(_:):RangeViewController.swift">
+      </ContextState>
+      <ContextState
+         contextName = "RangeViewController.showCoordinate(_:):RangeViewController.swift">
+      </ContextState>
+      <ContextState
+         contextName = "RangeViewController.getCoordinates():RangeViewController.swift">
+      </ContextState>
+      <ContextState
+         contextName = "ViewController.next(_:):ViewController.swift">
+      </ContextState>
+      <ContextState
+         contextName = "RangeViewController.showRegion(_:):RangeViewController.swift">
+      </ContextState>
+      <ContextState
+         contextName = "ViewController.viewDidLoad():ViewController.swift">
+      </ContextState>
+   </ContextStates>
+</VariablesViewState>
