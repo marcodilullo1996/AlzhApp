@@ -11,7 +11,7 @@ import MapKit
 import CoreLocation
 
 
-class RangeViewController: UIViewController, CLLocationManagerDelegate {
+class RangeViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate, UITextFieldDelegate {
 
     @IBOutlet weak var rangeTextField: UITextField!
     @IBOutlet weak var mapRange: MKMapView!
@@ -19,12 +19,19 @@ class RangeViewController: UIViewController, CLLocationManagerDelegate {
     var locationManager: CLLocationManager!
     var userPosition: CLLocationCoordinate2D!
     
+    var geocoder = CLGeocoder()
+    var coordinates: CLLocationCoordinate2D?
+    
     var addressLocation = ""
+    var range: CLLocationDistance?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         rangeTextField.setBottomBorder(withColor: .black)
+        rangeTextField.delegate = self
+        
+        
         
         locationManager = CLLocationManager() //INizializziamo location manager
         locationManager.delegate = self
@@ -32,42 +39,44 @@ class RangeViewController: UIViewController, CLLocationManagerDelegate {
         locationManager.requestAlwaysAuthorization()
         locationManager.startUpdatingLocation()
         
-        //addressLocation =
-
-        // Do any additional setup after loading the view.
+        
+        getCoordinates()
     }
     
-    @IBAction func showRegion(_ sender: Any)
-    {
-        var geocoder = CLGeocoder()
-        var coordinates: CLLocationCoordinate2D?
-        geocoder.geocodeAddressString(addressLocation) {
-            placemarks, error in
-            let placemark = placemarks?.first
-            coordinates = placemark?.location?.coordinate
-            
-            print("Coordinate: \(coordinates!)")
-            
-            var region: MKCoordinateRegion = self.mapRange.region
-            region.center.latitude = (placemark?.location?.coordinate.latitude)!
-            region.center.longitude = (placemark?.location?.coordinate.longitude)!
-            
-            region.span = MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01)
-            
-            self.mapRange.setRegion(region, animated: true)
-            //self.mapRange.addAnnotation(placemark)
-            
-            print("Coordinate: \(coordinates!)")
-            
-            /*let region = CLCircularRegion(center: coordinates!, radius: 10000, identifier: "geofence") // radius: 200
-            self.mapRange.removeOverlays(self.mapRange.overlays)
-            self.locationManager.startMonitoring(for: region)
-            let circle = MKCircle(center: coordinates!, radius: region.radius)
-            self.mapRange.addOverlay(circle)
- */
-
-        }
+    
+    
+    @IBAction func showRegion(_ sender: Any) {
         
+        range = Double(rangeTextField.text!)
+        
+        let region = CLCircularRegion(center: coordinates!, radius: range!, identifier: "geofence") // radius: 200
+        mapRange.removeOverlays(mapRange.overlays)
+        locationManager.startMonitoring(for: region)
+        let circle = MKCircle(center: coordinates!, radius: region.radius)
+        mapRange.addOverlay(circle)
+    
+    }
+    
+    @IBAction func nextButton(_ sender: Any)
+    {
+        performSegue(withIdentifier: "goToPOI", sender: self)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?)
+    {
+        var vc = segue.destination as! PointOfInterestViewController
+    
+    }
+    func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
+        guard let circleOverlay = overlay as? MKCircle else { return MKOverlayRenderer() }
+        let circleRenderer = MKCircleRenderer(circle: circleOverlay)
+        circleRenderer.strokeColor = .red
+        circleRenderer.fillColor = .red
+        circleRenderer.alpha = 0.5
+        
+        
+        
+        return circleRenderer
     }
     
     /*
@@ -79,28 +88,38 @@ class RangeViewController: UIViewController, CLLocationManagerDelegate {
         // Pass the selected object to the new view controller.
     }
     */
-
+    
+    
+    //MARK: - Helper
+    
+     func getCoordinates() {
+        geocoder.geocodeAddressString(addressLocation) {
+            [weak self] placemarks, error in
+            guard let strongSelf = self else { return }
+            
+            let placemark = placemarks?.first
+            strongSelf.coordinates = placemark?.location?.coordinate
+            
+            var region: MKCoordinateRegion = strongSelf.mapRange.region
+            region.center.latitude = (placemark?.location?.coordinate.latitude)!
+            region.center.longitude = (placemark?.location?.coordinate.longitude)!
+            
+            region.span = MKCoordinateSpan(latitudeDelta: 0.4, longitudeDelta: 0.4)
+            
+            strongSelf.mapRange.setRegion(region, animated: true)
+            
+            print("Coordinate: \(strongSelf.coordinates!)")
+            
+            
+            
+        }
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
 }
 
-/*extension UITextField {
-    func setBottomBorder(withColor color: UIColor) {
-        self.borderStyle = UITextField.BorderStyle.none
-        self.backgroundColor = UIColor.clear
-        let height: CGFloat = 1.0
-        
-        let borderLine = UIView(frame: CGRect(x: 0, y: self.frame.height - height+10, width: self.frame.width, height: height))
-        borderLine.backgroundColor = color
-        self.addSubview(borderLine)
-    }
-}*/
 
-extension RangeViewController: MKMapViewDelegate {
-    func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
-        guard let circleOverlay = overlay as? MKCircle else { return MKOverlayRenderer() }
-        let circleRenderer = MKCircleRenderer(circle: circleOverlay)
-        circleRenderer.strokeColor = .red
-        circleRenderer.fillColor = .red
-        circleRenderer.alpha = 0.5
-        return circleRenderer
-    }
-}
+

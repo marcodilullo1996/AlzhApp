@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, UITextFieldDelegate {
 
     @IBOutlet weak var nameField: UITextField!
     @IBOutlet weak var surnameField: UITextField!
@@ -17,11 +17,17 @@ class ViewController: UIViewController {
     var address = ""
     
     
-    override func viewDidLoad() {
+    override func viewDidLoad()
+    {
         super.viewDidLoad()
         nameField.setBottomBorder(withColor: .black)
         surnameField.setBottomBorder(withColor: .black)
         addressField.setBottomBorder(withColor: .black)
+        
+        nameField.delegate = self
+        surnameField.delegate = self
+        addressField.delegate = self
+
 
         // Do any additional setup after loading the view.
     }
@@ -32,7 +38,8 @@ class ViewController: UIViewController {
         performSegue(withIdentifier: "passInformation", sender: self)
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?)
+    {
         var vc = segue.destination as! RangeViewController
         vc.addressLocation = self.address
     }
@@ -45,6 +52,11 @@ class ViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
 
 }
 
@@ -59,3 +71,6 @@ extension UITextField {
         self.addSubview(borderLine)
     }
 }
+
+
+
