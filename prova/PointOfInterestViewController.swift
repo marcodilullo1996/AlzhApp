@@ -7,11 +7,35 @@
 //
 
 import UIKit
+import MapKit
+import CoreLocation
 
-class PointOfInterestViewController: UIViewController {
-
+class PointOfInterestViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate, UITextFieldDelegate {
+    
+    @IBOutlet weak var rangeLabel: UILabel!
+    
+    var locationManager: CLLocationManager!
+    var userPosition: CLLocationCoordinate2D!
+    
+    var rangeRead: CLLocationDistance?
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        var stringa: String
+        var double: Double
+        
+        double = Double(rangeRead!)
+        stringa = String(double)
+        
+        rangeLabel.text = stringa
+        
+        
+        
+        
+        
+        
 
         // Do any additional setup after loading the view.
     }

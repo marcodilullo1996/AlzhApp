@@ -14,15 +14,20 @@ class ViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var surnameField: UITextField!
     @IBOutlet weak var addressField: UITextField!
     
+    var db = Database.shared
+
+    
     var address = ""
+    var name = ""
+    var surname = ""
     
     
-    override func viewDidLoad()
-    {
+    override func viewDidLoad() {
         super.viewDidLoad()
         nameField.setBottomBorder(withColor: .black)
         surnameField.setBottomBorder(withColor: .black)
         addressField.setBottomBorder(withColor: .black)
+
         
         nameField.delegate = self
         surnameField.delegate = self
@@ -32,17 +37,20 @@ class ViewController: UIViewController, UITextFieldDelegate {
         // Do any additional setup after loading the view.
     }
     
-    @IBAction func next(_ sender: Any)
-    {
+    @IBAction func next(_ sender: Any) {
+        name = nameField.text!
+        surname = surnameField.text!
         address = addressField.text!
-        performSegue(withIdentifier: "passInformation", sender: self)
+        
+        let c = Coord(lat: 1.2, lon: 3.2)
+        let addr = Address(text: address, coord: c)
+        let u = User(firstname: name, lastname: surname, address: addr)
+        
+        db.patient.user = u
+        db.save(element: db.patient, forKey: "Patient")
+        print(db.patient.user.firstname)
     }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?)
-    {
-        var vc = segue.destination as! RangeViewController
-        vc.addressLocation = self.address
-    }
+
     /*
     // MARK: - Navigation
 

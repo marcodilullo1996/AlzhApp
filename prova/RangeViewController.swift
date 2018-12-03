@@ -22,8 +22,9 @@ class RangeViewController: UIViewController, CLLocationManagerDelegate, MKMapVie
     var geocoder = CLGeocoder()
     var coordinates: CLLocationCoordinate2D?
     
-    var addressLocation = ""
     var range: CLLocationDistance?
+    
+    let db = Database.shared
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -65,6 +66,7 @@ class RangeViewController: UIViewController, CLLocationManagerDelegate, MKMapVie
     override func prepare(for segue: UIStoryboardSegue, sender: Any?)
     {
         var vc = segue.destination as! PointOfInterestViewController
+        vc.rangeRead = self.range
     
     }
     func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
@@ -93,7 +95,7 @@ class RangeViewController: UIViewController, CLLocationManagerDelegate, MKMapVie
     //MARK: - Helper
     
      func getCoordinates() {
-        geocoder.geocodeAddressString(addressLocation) {
+        geocoder.geocodeAddressString(db.patient.user.address!.text) {
             [weak self] placemarks, error in
             guard let strongSelf = self else { return }
             
