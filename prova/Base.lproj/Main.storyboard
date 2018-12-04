@@ -259,6 +259,15 @@
                                     <outlet property="delegate" destination="uNQ-Y6-Kvi" id="qWk-t9-1KY"/>
                                 </connections>
                             </mapView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Prk-OH-8Gf">
+                                <rect key="frame" x="112" y="266" width="154" height="41"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                <state key="normal" title="Send message"/>
+                                <connections>
+                                    <action selector="sendPosition:" destination="uNQ-Y6-Kvi" eventType="touchUpInside" id="qe0-lN-U6D"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="Vnn-kv-07a"/>

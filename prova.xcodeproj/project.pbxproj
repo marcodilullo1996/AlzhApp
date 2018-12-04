@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8F1DA6C221B6E2C500546DC2 /* Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F1DA6C121B6E2C500546DC2 /* Notifications.swift */; };
+		8F1DA6C621B6EA4C00546DC2 /* podfile in Resources */ = {isa = PBXBuildFile; fileRef = 8F1DA6C521B6EA4C00546DC2 /* podfile */; };
+		8F1DA6C821B6EF7800546DC2 /* PushNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8F1DA6C721B6EF7800546DC2 /* PushNotifications.framework */; };
+		A06F12F8CAA8DC2798CB39FD /* Pods_prova.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 246169A5530511F3E3E8ACE3 /* Pods_prova.framework */; };
 		AB12EC9D21B2C538008BEC5D /* Geotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB12EC9C21B2C538008BEC5D /* Geotification.swift */; };
 		AB12ECA121B300D2008BEC5D /* PointOfInterestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB12ECA021B300D2008BEC5D /* PointOfInterestViewController.swift */; };
 		AB55673B21B19C0B00CAFE87 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB55673A21B19C0B00CAFE87 /* ViewController.swift */; };
@@ -22,6 +26,14 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0E0A050E0FABE285B0AA3124 /* Pods-prova.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-prova.debug.xcconfig"; path = "Pods/Target Support Files/Pods-prova/Pods-prova.debug.xcconfig"; sourceTree = "<group>"; };
+		246169A5530511F3E3E8ACE3 /* Pods_prova.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_prova.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8F1DA6C121B6E2C500546DC2 /* Notifications.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Notifications.swift; sourceTree = "<group>"; };
+		8F1DA6C321B6E43D00546DC2 /* PushNotificationsExample.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = PushNotificationsExample.entitlements; sourceTree = "<group>"; };
+		8F1DA6C421B6E45E00546DC2 /* prova.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = prova.entitlements; sourceTree = "<group>"; };
+		8F1DA6C521B6EA4C00546DC2 /* podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = podfile; sourceTree = "<group>"; };
+		8F1DA6C721B6EF7800546DC2 /* PushNotifications.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = PushNotifications.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A4F3566E79C4AB4BB42152C1 /* Pods-prova.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-prova.release.xcconfig"; path = "Pods/Target Support Files/Pods-prova/Pods-prova.release.xcconfig"; sourceTree = "<group>"; };
 		AB12EC9C21B2C538008BEC5D /* Geotification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Geotification.swift; sourceTree = "<group>"; };
 		AB12ECA021B300D2008BEC5D /* PointOfInterestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointOfInterestViewController.swift; sourceTree = "<group>"; };
 		AB221A0021AEF91100836B7D /* DeHangster Free Demo.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "DeHangster Free Demo.otf"; path = "../../../Downloads/DeHangster Free Demo.otf"; sourceTree = "<group>"; };
@@ -45,13 +57,24 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8F1DA6C821B6EF7800546DC2 /* PushNotifications.framework in Frameworks */,
 				AB9EE36521B298CE00EDC731 /* MapKit.framework in Frameworks */,
+				A06F12F8CAA8DC2798CB39FD /* Pods_prova.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		817F8521406A94D2D10D83E8 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				0E0A050E0FABE285B0AA3124 /* Pods-prova.debug.xcconfig */,
+				A4F3566E79C4AB4BB42152C1 /* Pods-prova.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		AB60360221B580E60028492D /* persi */ = {
 			isa = PBXGroup;
 			children = (
@@ -64,10 +87,12 @@
 		AB7913D521ADA98500428D7A = {
 			isa = PBXGroup;
 			children = (
+				8F1DA6C521B6EA4C00546DC2 /* podfile */,
 				AB60360221B580E60028492D /* persi */,
 				AB7913E021ADA98500428D7A /* prova */,
 				AB7913DF21ADA98500428D7A /* Products */,
 				AB9EE36321B298CE00EDC731 /* Frameworks */,
+				817F8521406A94D2D10D83E8 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -82,6 +107,8 @@
 		AB7913E021ADA98500428D7A /* prova */ = {
 			isa = PBXGroup;
 			children = (
+				8F1DA6C421B6E45E00546DC2 /* prova.entitlements */,
+				8F1DA6C321B6E43D00546DC2 /* PushNotificationsExample.entitlements */,
 				AB7913E121ADA98500428D7A /* AppDelegate.swift */,
 				AB55673A21B19C0B00CAFE87 /* ViewController.swift */,
 				AB7913E521ADA98500428D7A /* Main.storyboard */,
@@ -89,6 +116,7 @@
 				AB7913EA21ADA98700428D7A /* LaunchScreen.storyboard */,
 				AB7913ED21ADA98700428D7A /* Info.plist */,
 				AB221A0021AEF91100836B7D /* DeHangster Free Demo.otf */,
+				8F1DA6C121B6E2C500546DC2 /* Notifications.swift */,
 				AB9EE36121B2982100EDC731 /* RangeViewController.swift */,
 				AB12EC9C21B2C538008BEC5D /* Geotification.swift */,
 				AB12ECA021B300D2008BEC5D /* PointOfInterestViewController.swift */,
@@ -100,8 +128,10 @@
 		AB9EE36321B298CE00EDC731 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				8F1DA6C721B6EF7800546DC2 /* PushNotifications.framework */,
 				AB6035F021B574A30028492D /* Persistance */,
 				AB9EE36421B298CE00EDC731 /* MapKit.framework */,
+				246169A5530511F3E3E8ACE3 /* Pods_prova.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -113,9 +143,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = AB7913F021ADA98700428D7A /* Build configuration list for PBXNativeTarget "prova" */;
 			buildPhases = (
+				1CD67E2F4199DE0F188E4994 /* [CP] Check Pods Manifest.lock */,
 				AB7913DA21ADA98500428D7A /* Sources */,
 				AB7913DB21ADA98500428D7A /* Frameworks */,
 				AB7913DC21ADA98500428D7A /* Resources */,
+				40353725DB6B3401B96FE06C /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -139,7 +171,13 @@
 					AB7913DD21ADA98500428D7A = {
 						CreatedOnToolsVersion = 10.1;
 						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
 							com.apple.Maps.iOS = {
+								enabled = 1;
+							};
+							com.apple.Push = {
 								enabled = 1;
 							};
 						};
@@ -171,11 +209,59 @@
 			files = (
 				AB7913EC21ADA98700428D7A /* LaunchScreen.storyboard in Resources */,
 				AB7913E921ADA98700428D7A /* Assets.xcassets in Resources */,
+				8F1DA6C621B6EA4C00546DC2 /* podfile in Resources */,
 				AB7913E721ADA98500428D7A /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		1CD67E2F4199DE0F188E4994 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-prova-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		40353725DB6B3401B96FE06C /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-prova/Pods-prova-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/PushNotifications/PushNotifications.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PushNotifications.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-prova/Pods-prova-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		AB7913DA21ADA98500428D7A /* Sources */ = {
@@ -185,6 +271,7 @@
 				AB55673B21B19C0B00CAFE87 /* ViewController.swift in Sources */,
 				AB12ECA121B300D2008BEC5D /* PointOfInterestViewController.swift in Sources */,
 				AB5F40E521B3052000141D03 /* InfoTabViewController.swift in Sources */,
+				8F1DA6C221B6E2C500546DC2 /* Notifications.swift in Sources */,
 				AB7913E221ADA98500428D7A /* AppDelegate.swift in Sources */,
 				AB9EE36221B2982100EDC731 /* RangeViewController.swift in Sources */,
 				AB12EC9D21B2C538008BEC5D /* Geotification.swift in Sources */,
@@ -333,8 +420,10 @@
 		};
 		AB7913F121ADA98700428D7A /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0E0A050E0FABE285B0AA3124 /* Pods-prova.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = prova/prova.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 93JF9LS6ZY;
 				INFOPLIST_FILE = prova/Info.plist;
@@ -351,8 +440,10 @@
 		};
 		AB7913F221ADA98700428D7A /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A4F3566E79C4AB4BB42152C1 /* Pods-prova.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = prova/prova.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 93JF9LS6ZY;
 				INFOPLIST_FILE = prova/Info.plist;

@@ -7,17 +7,42 @@
 //
 
 import UIKit
+import PushNotifications
+import UserNotifications
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate{
 
     var window: UIWindow?
+    let pushNotifications = PushNotifications.shared
+    let center = UNUserNotificationCenter.current()
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        self.pushNotifications.start(instanceId: "d34ad54c-7107-4c4f-ba63-d3d87e034acd")
+        self.pushNotifications.registerForRemoteNotifications()
+        try? self.pushNotifications.subscribe(interest: "hello2")
+        
+        center.delegate = self
+        
+        let alertCategory = UNNotificationCategory(identifier: "ALERT_CATEGORY",
+                                                   actions: [],
+                                                   intentIdentifiers: [],
+                                                   options: .customDismissAction)
+        
+        let mapCategory = UNNotificationCategory(identifier: "MAP_CATEGORY",
+                                                 actions: [],
+                                                 intentIdentifiers: [],
+                                                 options: .customDismissAction)
+        
+        // Register the category.
+        
+        center.setNotificationCategories([alertCategory, mapCategory])
+        
         return true
     }
+    
 
     func applicationWillResignActive(_ application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
@@ -40,7 +65,29 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
-
+    func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
+        self.pushNotifications.registerDeviceToken(deviceToken)
+    }
+    
+    func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
+        self.pushNotifications.handleNotification(userInfo: userInfo)
+    }
+    
+    func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
+        switch response.notification.request.content.categoryIdentifier {
+        case "MAP_CATEGORY":
+            let sb = UIStoryboard(name: "Main", bundle: nil)
+            let mapViewController = sb.instantiateViewController(withIdentifier: "MapViewController") as! MapViewController
+            window?.rootViewController = mapViewController;
+        default:
+            break
+        }
+        
+        
+    }
 
 }
+
+
+
 

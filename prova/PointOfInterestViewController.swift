@@ -10,7 +10,65 @@ import UIKit
 import MapKit
 import CoreLocation
 
+import PushNotifications
+import Foundation
+
 class PointOfInterestViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
+    
+//    -----------------
+    let pushNotifications = PushNotifications.shared
+    let instanceID = "d34ad54c-7107-4c4f-ba63-d3d87e034acd"
+    let token = "3B726F93039CC4C283AE419A9525850F998F17CE49A310D023D959EB82AC980E"
+    
+    var json = """
+{
+    "interests": [
+        "hello"
+    ],
+    "apns": {
+        "aps": {
+            "alert": {
+                "title": "Hello",
+                "body": "Hello, world!"
+            },
+            "badge": 1,
+            "category": "Map_category"
+        }
+    }
+}
+"""
+    
+    
+    func displayAlert() {
+        
+    }
+    
+    @IBAction func sendPosition(_ sender: Any) {
+        var request = URLRequest(url: URL(string: "https://\(instanceID).pushnotifications.pusher.com/publish_api/v1/instances/\(instanceID)/publishes")!)
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.setValue( "Bearer \(token)", forHTTPHeaderField: "Authorization")
+        
+        request.httpMethod = "POST"
+        
+        request.httpBody = json.data(using: .utf8)
+        
+        let task = URLSession.shared.dataTask(with: request) { data, response, error in
+            guard let data = data, error == nil else {
+                print(error?.localizedDescription ?? "No data")
+                return
+            }
+            let responseJSON = try? JSONSerialization.jsonObject(with: data, options: [])
+            if let responseJSON = responseJSON as? [String: Any] {
+                print(responseJSON)
+            }
+        }
+        
+        task.resume()
+    }
+//    ---------------
+    
+    
+    
     
 
 
@@ -81,3 +139,13 @@ class PointOfInterestViewController: UIViewController, CLLocationManagerDelegate
     */
 
 }
+
+
+
+
+
+    
+
+    
+
+
