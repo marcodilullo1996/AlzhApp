@@ -24,6 +24,11 @@ class ViewController: UIViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        nameField.text = db.patient.user.firstname
+        surnameField.text = db.patient.user.lastname
+        addressField.text = db.patient.user.address?.text
+
+
         nameField.setBottomBorder(withColor: .black)
         surnameField.setBottomBorder(withColor: .black)
         addressField.setBottomBorder(withColor: .black)
@@ -38,19 +43,25 @@ class ViewController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func next(_ sender: Any) {
-        name = nameField.text!
-        surname = surnameField.text!
-        address = addressField.text!
-        
-        let c = Coord(lat: 1.2, lon: 3.2)
-        let addr = Address(text: address, coord: c)
-        let u = User(firstname: name, lastname: surname, address: addr)
-        
-        db.patient.user = u
-        db.save(element: db.patient, forKey: "Patient")
-        print(db.patient.user.firstname)
-    }
+        if !nameField.text!.isEmpty && !surnameField.text!.isEmpty && !addressField.text!.isEmpty {
+            if !addressField.text!.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines).isEmpty {
 
+                name = nameField.text!
+                surname = surnameField.text!
+                address = addressField.text!
+                
+                let c = Coord(lat: 1.2, lon: 3.2)
+                let addr = Address(text: address, coord: c, range: 1.0)
+                let u = User(firstname: name, lastname: surname, address: addr)
+                
+                db.patient.user = u
+                db.save(element: db.patient, forKey: "Patient")
+                print(db.patient.user.firstname)
+                
+                performSegue(withIdentifier: "passInformation", sender: self)
+            }
+        }
+    }
     /*
     // MARK: - Navigation
 

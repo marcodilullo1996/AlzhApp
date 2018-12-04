@@ -17,7 +17,6 @@ class RangeViewController: UIViewController, CLLocationManagerDelegate, MKMapVie
     @IBOutlet weak var mapRange: MKMapView!
     
     var locationManager: CLLocationManager!
-    var userPosition: CLLocationCoordinate2D!
     
     var geocoder = CLGeocoder()
     var coordinates: CLLocationCoordinate2D?
@@ -42,6 +41,9 @@ class RangeViewController: UIViewController, CLLocationManagerDelegate, MKMapVie
         
         
         getCoordinates()
+
+        
+
     }
     
     
@@ -50,10 +52,27 @@ class RangeViewController: UIViewController, CLLocationManagerDelegate, MKMapVie
         
         range = Double(rangeTextField.text!)
         
-        let region = CLCircularRegion(center: coordinates!, radius: range!, identifier: "geofence") // radius: 200
+        db.patient.user.address?.range = range!
+
+
+        
+        //coordinates.latitude = (db.patient.user.address!.coord.lat)
+        //coordinates!.longitude = (db.patient.user.address!.coord.lon)
+        coordinates = CLLocationCoordinate2D(latitude: db.patient.user.address!.coord.lat, longitude: db.patient.user.address!.coord.lon)
+//        coordinates!.latitude =  db.patient.user.address!.coord.lat
+//        coordinates!.longitude = db.patient.user.address!.coord.lon
+        
+        range =  db.patient.user.address!.range as CLLocationDistance
+        
+//        print("Ciao 4 \(range)")
+        
+//        coordinates = CLLocationCoordinate2D(db.patient.user.address?.coord)
+        
+        let region = CLCircularRegion(center: coordinates! , radius: range!, identifier: "geofence") // radius: 200
         mapRange.removeOverlays(mapRange.overlays)
         locationManager.startMonitoring(for: region)
         let circle = MKCircle(center: coordinates!, radius: region.radius)
+        
         mapRange.addOverlay(circle)
     
     }
@@ -63,20 +82,12 @@ class RangeViewController: UIViewController, CLLocationManagerDelegate, MKMapVie
         performSegue(withIdentifier: "goToPOI", sender: self)
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?)
-    {
-        var vc = segue.destination as! PointOfInterestViewController
-        vc.rangeRead = self.range
-    
-    }
     func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
         guard let circleOverlay = overlay as? MKCircle else { return MKOverlayRenderer() }
         let circleRenderer = MKCircleRenderer(circle: circleOverlay)
         circleRenderer.strokeColor = .red
         circleRenderer.fillColor = .red
         circleRenderer.alpha = 0.5
-        
-        
         
         return circleRenderer
     }
@@ -100,7 +111,9 @@ class RangeViewController: UIViewController, CLLocationManagerDelegate, MKMapVie
             guard let strongSelf = self else { return }
             
             let placemark = placemarks?.first
-            strongSelf.coordinates = placemark?.location?.coordinate
+            strongSelf.db.patient.user.address?.coord.lat = (placemark?.location?.coordinate.latitude)!
+            strongSelf.db.patient.user.address?.coord.lon = (placemark?.location?.coordinate.longitude)!
+
             
             var region: MKCoordinateRegion = strongSelf.mapRange.region
             region.center.latitude = (placemark?.location?.coordinate.latitude)!
@@ -110,7 +123,6 @@ class RangeViewController: UIViewController, CLLocationManagerDelegate, MKMapVie
             
             strongSelf.mapRange.setRegion(region, animated: true)
             
-            print("Coordinate: \(strongSelf.coordinates!)")
             
             
             
