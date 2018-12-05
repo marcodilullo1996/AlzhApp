@@ -10,6 +10,7 @@
 		8F1DA6C221B6E2C500546DC2 /* Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F1DA6C121B6E2C500546DC2 /* Notifications.swift */; };
 		8F1DA6C621B6EA4C00546DC2 /* podfile in Resources */ = {isa = PBXBuildFile; fileRef = 8F1DA6C521B6EA4C00546DC2 /* podfile */; };
 		8F1DA6C821B6EF7800546DC2 /* PushNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8F1DA6C721B6EF7800546DC2 /* PushNotifications.framework */; };
+		8F6EFE5221B811B600A4ABD7 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F6EFE5121B811B600A4ABD7 /* MainTabBarController.swift */; };
 		A06F12F8CAA8DC2798CB39FD /* Pods_prova.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 246169A5530511F3E3E8ACE3 /* Pods_prova.framework */; };
 		AB12EC9D21B2C538008BEC5D /* Geotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB12EC9C21B2C538008BEC5D /* Geotification.swift */; };
 		AB12ECA121B300D2008BEC5D /* PointOfInterestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB12ECA021B300D2008BEC5D /* PointOfInterestViewController.swift */; };
@@ -33,6 +34,7 @@
 		8F1DA6C421B6E45E00546DC2 /* prova.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = prova.entitlements; sourceTree = "<group>"; };
 		8F1DA6C521B6EA4C00546DC2 /* podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = podfile; sourceTree = "<group>"; };
 		8F1DA6C721B6EF7800546DC2 /* PushNotifications.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = PushNotifications.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8F6EFE5121B811B600A4ABD7 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		A4F3566E79C4AB4BB42152C1 /* Pods-prova.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-prova.release.xcconfig"; path = "Pods/Target Support Files/Pods-prova/Pods-prova.release.xcconfig"; sourceTree = "<group>"; };
 		AB12EC9C21B2C538008BEC5D /* Geotification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Geotification.swift; sourceTree = "<group>"; };
 		AB12ECA021B300D2008BEC5D /* PointOfInterestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointOfInterestViewController.swift; sourceTree = "<group>"; };
@@ -112,6 +114,7 @@
 				AB7913E121ADA98500428D7A /* AppDelegate.swift */,
 				AB55673A21B19C0B00CAFE87 /* ViewController.swift */,
 				AB7913E521ADA98500428D7A /* Main.storyboard */,
+				8F6EFE5121B811B600A4ABD7 /* MainTabBarController.swift */,
 				AB7913E821ADA98700428D7A /* Assets.xcassets */,
 				AB7913EA21ADA98700428D7A /* LaunchScreen.storyboard */,
 				AB7913ED21ADA98700428D7A /* Info.plist */,
@@ -270,6 +273,7 @@
 			files = (
 				AB55673B21B19C0B00CAFE87 /* ViewController.swift in Sources */,
 				AB12ECA121B300D2008BEC5D /* PointOfInterestViewController.swift in Sources */,
+				8F6EFE5221B811B600A4ABD7 /* MainTabBarController.swift in Sources */,
 				AB5F40E521B3052000141D03 /* InfoTabViewController.swift in Sources */,
 				8F1DA6C221B6E2C500546DC2 /* Notifications.swift in Sources */,
 				AB7913E221ADA98500428D7A /* AppDelegate.swift in Sources */,
@@ -431,7 +435,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = it.parthenope.prova;
+				PRODUCT_BUNDLE_IDENTIFIER = it.iosparthenope.iSport;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -451,7 +455,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = it.parthenope.prova;
+				PRODUCT_BUNDLE_IDENTIFIER = it.iosparthenope.iSport;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";

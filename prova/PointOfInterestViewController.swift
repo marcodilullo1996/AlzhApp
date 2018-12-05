@@ -23,7 +23,7 @@ class PointOfInterestViewController: UIViewController, CLLocationManagerDelegate
     var json = """
 {
     "interests": [
-        "hello"
+        "AlzhApp"
     ],
     "apns": {
         "aps": {
@@ -32,7 +32,11 @@ class PointOfInterestViewController: UIViewController, CLLocationManagerDelegate
                 "body": "Hello, world!"
             },
             "badge": 1,
-            "category": "Map_category"
+            "category": "MAP_CATEGORY"
+        },
+        "coordinates": {
+            "lat": 2.3,
+            "lon": 3.2
         }
     }
 }
