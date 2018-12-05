@@ -81,14 +81,29 @@ class PointOfInterestViewController: UIViewController, CLLocationManagerDelegate
     
     @IBOutlet weak var mapPOI: MKMapView!
     
+    @IBOutlet weak var idPOITextField: UITextField!
+    @IBOutlet weak var addressPOITextField: UITextField!
+    
+    
+    
+    
+    var idPOI = ""
+    var addressPOI = ""
+    
     var coordinates: CLLocationCoordinate2D?
     var range: CLLocationDistance?
+    
+    var geocoder = CLGeocoder()
 
 
     let db = Database.shared
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        idPOITextField.setBottomBorder(withColor: .black)
+        addressPOITextField.setBottomBorder(withColor: .black)
+        
         
         locationManager = CLLocationManager() //INizializziamo location manager
         locationManager.delegate = self
@@ -114,7 +129,6 @@ class PointOfInterestViewController: UIViewController, CLLocationManagerDelegate
         locationManager.startMonitoring(for: region2)
         let circle = MKCircle(center: coordinates!, radius: region2.radius)
         
-        print("Ciao")
         mapPOI.addOverlay(circle)
         
         let annotation = MKPointAnnotation()
@@ -122,8 +136,47 @@ class PointOfInterestViewController: UIViewController, CLLocationManagerDelegate
         mapPOI.addAnnotation(annotation)
         
         
+        
+        
+        
         // Do any additional setup after loading the view.
     }
+    
+    
+    @IBAction func addPOI(_ sender: Any)
+    {
+        idPOI = idPOITextField.text!
+        addressPOI = addressPOITextField.text!
+        
+        print(idPOI)
+        print(addressPOI)
+        
+        var pCoord = Coord(lat: 1.0, lon: 1.0)
+        var pAddr = Addr(text: addressPOI, coordPOI: pCoord )
+        var po = POI(namePOI: idPOI, addrPOI: pAddr)
+        
+        db.POI.p = po
+        db.save(element: db.POI, forKey: "POI")
+        
+        getCoordinates()
+        
+        
+        print()
+        
+        
+        
+        
+        
+//        let c = Coord(lat: 1.1, lon: 3.2)
+//        let p = POI(addr: pointOI, poiCoord: Coord)
+//
+//        print(pointOI)
+//
+//
+//        getCoordinates()
+        
+    }
+    
     
     func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
         guard let circleOverlay = overlay as? MKCircle else { return MKOverlayRenderer() }
@@ -146,6 +199,32 @@ class PointOfInterestViewController: UIViewController, CLLocationManagerDelegate
     }
     */
 
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+    
+    func getCoordinates() {
+        geocoder.geocodeAddressString(db.POI.p!.addrPOI.text) {
+            [weak self] placemarks, error in
+            guard let strongSelf = self else { return }
+            
+            let placemark = placemarks?.first
+            strongSelf.db.POI.p?.addrPOI.coordPOI.lat = (placemark?.location?.coordinate.latitude)!
+            strongSelf.db.POI.p?.addrPOI.coordPOI.lon = (placemark?.location?.coordinate.longitude)!
+            
+            
+            var region: MKCoordinateRegion = strongSelf.mapPOI.region
+            region.center.latitude = (placemark?.location?.coordinate.latitude)!
+            region.center.longitude = (placemark?.location?.coordinate.longitude)!
+            
+            region.span = MKCoordinateSpan(latitudeDelta: 0.4, longitudeDelta: 0.4)
+            
+            strongSelf.mapPOI.setRegion(region, animated: true)
+            
+            
+        }
+    }
 }
 
 

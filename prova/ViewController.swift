@@ -58,6 +58,8 @@ class ViewController: UIViewController, UITextFieldDelegate {
                 db.save(element: db.patient, forKey: "Patient")
                 print(db.patient.user.firstname)
                 
+                
+                
                 performSegue(withIdentifier: "passInformation", sender: self)
             }
         }

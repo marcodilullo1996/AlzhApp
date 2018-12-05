@@ -129,9 +129,6 @@ class RangeViewController: UIViewController, CLLocationManagerDelegate, MKMapVie
             
             strongSelf.mapRange.setRegion(region, animated: true)
             
-            
-            
-            
         }
     }
     
