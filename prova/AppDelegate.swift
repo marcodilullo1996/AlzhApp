@@ -9,9 +9,10 @@
 import UIKit
 import PushNotifications
 import UserNotifications
+import MapKit
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate{
+class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate {
 
     var window: UIWindow?
     let pushNotifications = PushNotifications.shared
@@ -22,7 +23,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         // Override point for customization after application launch.
         self.pushNotifications.start(instanceId: "d34ad54c-7107-4c4f-ba63-d3d87e034acd")
         self.pushNotifications.registerForRemoteNotifications()
-        try? self.pushNotifications.subscribe(interest: "hello2")
+        try? self.pushNotifications.subscribe(interest: "AlzhApp")
         
         center.delegate = self
         
@@ -77,7 +78,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         switch response.notification.request.content.categoryIdentifier {
         case "MAP_CATEGORY":
             let sb = UIStoryboard(name: "Main", bundle: nil)
-            let mapViewController = sb.instantiateViewController(withIdentifier: "MapViewController") as! MapViewController
+            let mapViewController = sb.instantiateViewController(withIdentifier: "MapsViewController") as!  MapsViewController
             window?.rootViewController = mapViewController;
         default:
             break
@@ -88,4 +89,40 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
 
 
 
+extension AppDelegate: CLLocationManagerDelegate {
+    
+    func note(fromRegionIdentifier identifier: String) -> String? {
+//        let savedItems = UserDefaults.standard.array(forKey: PreferencesKeys.savedItems) as? [NSData]
+//        let geotifications = savedItems?.map { NSKeyedUnarchiver.unarchiveObject(with: $0 as Data) as? Geotification }
+//        let index = geotifications?.index { print($0?.identifier); return $0?.identifier == identifier }
+//        return index != nil ? geotifications?[index!]?.note : nil
+        return nil
+    }
+
+    func handleEvent(forRegion region: CLRegion!) {
+        // Show an alert if application is active
+        if UIApplication.shared.applicationState == .active {
+            guard let message = note(fromRegionIdentifier: region.identifier) else { return }
+//            window?.rootViewController?.showAlert(withTitle: nil, message: message)
+        } else {
+            // Otherwise present a local notification
+            let notification = UILocalNotification()
+            notification.alertBody = note(fromRegionIdentifier: region.identifier)
+            notification.soundName = "Default"
+            UIApplication.shared.presentLocalNotificationNow(notification)
+        }
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didEnterRegion region: CLRegion) {
+        if region is CLCircularRegion {
+            handleEvent(forRegion: region)
+        }
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didExitRegion region: CLRegion) {
+        if region is CLCircularRegion {
+            handleEvent(forRegion: region)
+        }
+    }
+}
 

@@ -80,8 +80,6 @@ class RangeViewController: UIViewController, CLLocationManagerDelegate, MKMapVie
         annotation.coordinate = coordinates!
         mapRange.addAnnotation(annotation)
         
-        
-        
     
     }
     

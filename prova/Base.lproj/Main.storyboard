@@ -171,10 +171,10 @@
             </objects>
             <point key="canvasLocation" x="2111" y="1668"/>
         </scene>
-        <!--Range View Controller-->
+        <!--RangeViewController-->
         <scene sceneID="gY9-jo-pHA">
             <objects>
-                <viewController id="v6c-Ob-uMK" customClass="RangeViewController" customModule="prova" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="RangeViewController" title="RangeViewController" id="v6c-Ob-uMK" customClass="RangeViewController" customModule="prova" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="2sW-7N-P5u">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -376,10 +376,10 @@
             </objects>
             <point key="canvasLocation" x="3042" y="827"/>
         </scene>
-        <!--Maps-->
+        <!--MapsViewController-->
         <scene sceneID="i6h-wp-KMm">
             <objects>
-                <viewController id="gT4-qn-2ML" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MapsViewController" title="MapsViewController" id="gT4-qn-2ML" customClass="MapsViewController" customModule="prova" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="YNd-Ut-lSW">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -391,6 +391,10 @@
                                     <constraint firstAttribute="height" constant="85" id="RAT-CY-1wx"/>
                                 </constraints>
                             </imageView>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="Ibg-h5-1JS">
+                                <rect key="frame" x="0.0" y="113" width="375" height="505"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </mapView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -402,10 +406,13 @@
                         <viewLayoutGuide key="safeArea" id="YcB-Bb-3uf"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Maps" image="placeholder" id="4Vh-fS-QOq"/>
+                    <connections>
+                        <outlet property="MapView" destination="YNd-Ut-lSW" id="ceG-hO-Qsi"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Usp-XV-v7S" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3042" y="1668"/>
+            <point key="canvasLocation" x="3040.8000000000002" y="1667.3163418290856"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="2X0-8L-EGA">
