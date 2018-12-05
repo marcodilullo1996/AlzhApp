@@ -39,6 +39,7 @@ class RangeViewController: UIViewController, CLLocationManagerDelegate, MKMapVie
         locationManager.requestAlwaysAuthorization()
         locationManager.startUpdatingLocation()
         
+       
         
         getCoordinates()
 
@@ -74,6 +75,13 @@ class RangeViewController: UIViewController, CLLocationManagerDelegate, MKMapVie
         let circle = MKCircle(center: coordinates!, radius: region.radius)
         
         mapRange.addOverlay(circle)
+        
+        let annotation = MKPointAnnotation()
+        annotation.coordinate = coordinates!
+        mapRange.addAnnotation(annotation)
+        
+        
+        
     
     }
     

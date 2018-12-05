@@ -117,6 +117,10 @@ class PointOfInterestViewController: UIViewController, CLLocationManagerDelegate
         print("Ciao")
         mapPOI.addOverlay(circle)
         
+        let annotation = MKPointAnnotation()
+        annotation.coordinate = coordinates!
+        mapPOI.addAnnotation(annotation)
+        
         
         // Do any additional setup after loading the view.
     }
