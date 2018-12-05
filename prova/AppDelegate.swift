@@ -77,8 +77,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         switch response.notification.request.content.categoryIdentifier {
         case "MAP_CATEGORY":
             let sb = UIStoryboard(name: "Main", bundle: nil)
-            let mapViewController = sb.instantiateViewController(withIdentifier: "MapViewController") as! MapViewController
-            window?.rootViewController = mapViewController;
+            /*let mapViewController = sb.instantiateViewController(withIdentifier: "MapViewController") as! MapViewController
+            window?.rootViewController = mapViewController;*/
         default:
             break
         }

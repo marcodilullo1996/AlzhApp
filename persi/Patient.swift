@@ -11,7 +11,6 @@ struct User: Codable {
     var address: Address?
 }
 
-
 struct Address: Codable {
     var text: String
     var coord: Coord

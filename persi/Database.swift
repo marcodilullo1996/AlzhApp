@@ -25,6 +25,7 @@ class Database {
     // Put codable class here as class member
     //    var example: ExampleJSON
     var patient: Patient
+    var POI: POIOfInterest
     
     static func decode<T>(forClass jsonCodable: T.Type, withKey key: String) -> T? where T: Codable {
         do {
@@ -45,6 +46,9 @@ class Database {
     
     private init() {
         self.patient = Database.decode(forClass: Patient.self, withKey: "Patient") ?? Patient(user: User(firstname: "", lastname: "", address: nil))
+        
+        self.POI = Database.decode(forClass: POIOfInterest.self, withKey: "POI") ?? POIOfInterest(p: nil)
+        
     }
     
     func removeObject(withKey key: String) {

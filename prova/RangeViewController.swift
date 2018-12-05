@@ -81,8 +81,6 @@ class RangeViewController: UIViewController, CLLocationManagerDelegate, MKMapVie
         mapRange.addAnnotation(annotation)
         
         
-        
-    
     }
     
     @IBAction func nextButton(_ sender: Any)
@@ -130,9 +128,6 @@ class RangeViewController: UIViewController, CLLocationManagerDelegate, MKMapVie
             region.span = MKCoordinateSpan(latitudeDelta: 0.4, longitudeDelta: 0.4)
             
             strongSelf.mapRange.setRegion(region, animated: true)
-            
-            
-            
             
         }
     }
