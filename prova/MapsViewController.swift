@@ -15,7 +15,7 @@ class MapsViewController: UIViewController, MKMapViewDelegate, CLLocationManager
     
     @IBOutlet var MapView: UIView! = MKMapView()
     
-    var  userLocation: CLLocationCoordinate2D
+    var  userLocation: CLLocationCoordinate2D?
     
     override func viewDidLoad() {
         super.viewDidLoad()
