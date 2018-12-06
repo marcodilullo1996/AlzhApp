@@ -17,8 +17,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     var window: UIWindow?
     let pushNotifications = PushNotifications.shared
     let center = UNUserNotificationCenter.current()
-    
-
+    let locationManager = CLLocationManager()
+    var patientCoordinate: CLLocationCoordinate2D?
+    var timer: Timer?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
@@ -41,6 +42,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         // Register the category.
         
         center.setNotificationCategories([alertCategory, mapCategory])
+        
+        locationManager.delegate = self
+        locationManager.requestAlwaysAuthorization()
         
         return true
     }
@@ -93,37 +97,43 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
 
 extension AppDelegate: CLLocationManagerDelegate {
     
-    func note(fromRegionIdentifier identifier: String) -> String? {
-//        let savedItems = UserDefaults.standard.array(forKey: PreferencesKeys.savedItems) as? [NSData]
-//        let geotifications = savedItems?.map { NSKeyedUnarchiver.unarchiveObject(with: $0 as Data) as? Geotification }
-//        let index = geotifications?.index { print($0?.identifier); return $0?.identifier == identifier }
-//        return index != nil ? geotifications?[index!]?.note : nil
-        return nil
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        patientCoordinate = locations.first?.coordinate
+    }
+    
+    func showHelpNotification() {
+        let notification = UNMutableNotificationContent()
+        let patient = Database.shared.patient.user
+        notification.title = "HELP ME!"
+        notification.body = "My name is \(patient.firstname) \(patient.lastname), and I'm lost"
+        let notificationRequest = UNNotificationRequest(identifier: "help-me", content: notification, trigger: nil)
+        center.add(notificationRequest, withCompletionHandler: nil)
     }
 
-    func handleEvent(forRegion region: CLRegion!) {
+    func handleEvent(forRegion region: CLRegion!, type: String) {
         // Show an alert if application is active
-        if UIApplication.shared.applicationState == .active {
-            guard let message = note(fromRegionIdentifier: region.identifier) else { return }
-//            window?.rootViewController?.showAlert(withTitle: nil, message: message)
-        } else {
-            // Otherwise present a local notification
-            let notification = UILocalNotification()
-            notification.alertBody = note(fromRegionIdentifier: region.identifier)
-            notification.soundName = "Default"
-            UIApplication.shared.presentLocalNotificationNow(notification)
+        if type == "exit" {
+            showHelpNotification()
+            timer = Timer.scheduledTimer(withTimeInterval: 60 * 5, repeats: true, block: {
+                _ in
+                if let coord = self.patientCoordinate {
+                    PushNotifications.shared.sendPosition(lon: coord.longitude, lat: coord.latitude)
+                }
+            })
+        } else if type == "enter" {
+            timer?.invalidate()
         }
     }
     
     func locationManager(_ manager: CLLocationManager, didEnterRegion region: CLRegion) {
         if region is CLCircularRegion {
-            handleEvent(forRegion: region)
+            handleEvent(forRegion: region, type: "enter")
         }
     }
     
     func locationManager(_ manager: CLLocationManager, didExitRegion region: CLRegion) {
         if region is CLCircularRegion {
-            handleEvent(forRegion: region)
+            handleEvent(forRegion: region, type: "exit")
         }
     }
 }
@@ -133,6 +143,7 @@ extension PushNotifications {
     var instanceID: String {
         return "d34ad54c-7107-4c4f-ba63-d3d87e034acd"
     }
+    
     var token: String{
         return "3B726F93039CC4C283AE419A9525850F998F17CE49A310D023D959EB82AC980E"
     }
