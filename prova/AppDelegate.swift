@@ -17,6 +17,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     var window: UIWindow?
     let pushNotifications = PushNotifications.shared
     let center = UNUserNotificationCenter.current()
+    
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
@@ -127,3 +128,44 @@ extension AppDelegate: CLLocationManagerDelegate {
     }
 }
 
+extension PushNotifications {
+    
+    var instanceID: String {
+        return "d34ad54c-7107-4c4f-ba63-d3d87e034acd"
+    }
+    var token: String{
+        return "3B726F93039CC4C283AE419A9525850F998F17CE49A310D023D959EB82AC980E"
+    }
+
+    func sendPosition(lon: Double, lat: Double) {
+
+        let coord = Coordinates.init(lat: 40.85299 , lon: 14.24789)
+        let alert = Alert.init(title: "AlzhAPP", body: "Outside of safe area")
+        let aps = Aps.init(alert: alert, badge: 1, category: "MAP_CATEGORY")
+        let apns = Apns.init(aps: aps, coordinates: coord)
+        let notification = Notifications.init(interests: ["AlzhApp"], apns: apns)
+    
+        
+        var request = URLRequest(url: URL(string: "https://\(instanceID).pushnotifications.pusher.com/publish_api/v1/instances/\(instanceID)/publishes")!)
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.setValue( "Bearer \(token)", forHTTPHeaderField: "Authorization")
+        
+        request.httpMethod = "POST"
+        
+        request.httpBody =  try! JSONEncoder().encode(notification)
+        
+        let task = URLSession.shared.dataTask(with: request) { data, response, error in
+            guard let data = data, error == nil else {
+                print(error?.localizedDescription ?? "No data")
+                return
+            }
+            let responseJSON = try? JSONSerialization.jsonObject(with: data, options: [])
+            if let responseJSON = responseJSON as? [String: Any] {
+                print(responseJSON)
+            }
+        }
+        
+        task.resume()
+    }
+    
+}

@@ -15,7 +15,7 @@ struct Notifications: Codable {
 
 struct Apns: Codable {
     var aps: Aps
-    var coordinates: Coordinates
+    var coordinates: Coordinates?
 }
 
 struct Aps: Codable {

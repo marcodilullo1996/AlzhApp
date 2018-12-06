@@ -10,14 +10,12 @@ import UIKit
 import MapKit
 import CoreLocation
 
-import PushNotifications
 import Foundation
 
 class PointOfInterestViewController: UIViewController, CLLocationManagerDelegate, UITextFieldDelegate {
 
     var locationManager: CLLocationManager!
     var userPosition: CLLocationCoordinate2D!
-    
     @IBOutlet weak var mapPOI: MKMapView!
     
     @IBOutlet weak var idPOITextField: UITextField!
