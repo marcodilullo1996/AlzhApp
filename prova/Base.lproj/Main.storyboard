@@ -32,7 +32,7 @@
                                 <nil key="highlightedColor"/>
                                 <size key="shadowOffset" width="0.0" height="2"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ciao" translatesAutoresizingMaskIntoConstraints="NO" id="erY-E6-j60">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="erY-E6-j60">
                                 <rect key="frame" x="152" y="20" width="70" height="70"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="70" id="Gk1-Z5-2C4"/>
@@ -162,7 +162,7 @@
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="2yu-m5-B4g"/>
                                 </connections>
                             </textField>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ciao" translatesAutoresizingMaskIntoConstraints="NO" id="tCs-jZ-ihk">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="tCs-jZ-ihk">
                                 <rect key="frame" x="152" y="25" width="70" height="70"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="70" id="2cf-hi-vnh"/>
@@ -397,7 +397,7 @@
                                     <constraint firstAttribute="height" constant="85" id="q0V-zw-gyW"/>
                                 </constraints>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ciao" translatesAutoresizingMaskIntoConstraints="NO" id="Tnf-9m-2di">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="Tnf-9m-2di">
                                 <rect key="frame" x="162" y="20" width="50" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="VC1-bt-gyt"/>
@@ -413,7 +413,7 @@
                             </mapView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="AlzhApp" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="521-LM-SM7">
                                 <rect key="frame" x="151" y="64" width="73" height="41"/>
-                                <fontDescription key="fontDescription" name="HoeflerText-Italic" family="Hoefler Text" pointSize="16"/>
+                                <fontDescription key="fontDescription" name="HoeflerText-Italic" family="Hoefler Text" pointSize="15"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                                 <size key="shadowOffset" width="0.0" height="2"/>
@@ -504,12 +504,12 @@
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="AlzhApp" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rUt-2P-fZR">
                                 <rect key="frame" x="151" y="64" width="73" height="41"/>
-                                <fontDescription key="fontDescription" name="HoeflerText-Italic" family="Hoefler Text" pointSize="16"/>
+                                <fontDescription key="fontDescription" name="HoeflerText-Italic" family="Hoefler Text" pointSize="15"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                                 <size key="shadowOffset" width="0.0" height="2"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ciao" translatesAutoresizingMaskIntoConstraints="NO" id="Dxm-yL-j0I">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="Dxm-yL-j0I">
                                 <rect key="frame" x="162" y="20" width="50" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="50" id="dBp-EV-LgU"/>
@@ -905,11 +905,11 @@
     <resources>
         <image name="avatar" width="51.200000762939453" height="51.200000762939453"/>
         <image name="boh" width="91.199996948242188" height="31.200000762939453"/>
-        <image name="ciao" width="62.400001525878906" height="62.400001525878906"/>
+        <image name="logo" width="122.5" height="122.5"/>
         <image name="placeholder" width="41.513511657714844" height="41.513511657714844"/>
         <image name="user" width="47.201023101806641" height="47.201023101806641"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Wza-mc-yUr"/>
+        <segue reference="OHE-6g-Ytm"/>
     </inferredMetricsTieBreakers>
 </document>
