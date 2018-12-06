@@ -10,6 +10,9 @@ import UIKit
 
 class InfoTabViewController: UIViewController {
 
+    let db = Database.shared
+
+    
     @IBOutlet weak var image: UIImageView!
     @IBOutlet weak var firstNameLabel: UILabel!
     @IBOutlet weak var lastNameLabel: UILabel!
@@ -18,6 +21,10 @@ class InfoTabViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        firstNameLabel.text = db.patient.user.firstname
+        lastNameLabel.text = db.patient.user.lastname
+        addressLabel.text = db.patient.user.address?.text
+
 
 
         // Do any additional setup after loading the view.

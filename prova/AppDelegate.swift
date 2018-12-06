@@ -152,7 +152,7 @@ extension PushNotifications {
 
         let coord = Coordinates.init(lat: 40.85299 , lon: 14.24789)
         let alert = Alert.init(title: "AlzhAPP", body: "Outside of safe area")
-        let aps = Aps.init(alert: alert, badge: 1, category: "MAP_CATEGORY")
+        let aps = Aps.init(alert: alert, badge: 0, category: "MAP_CATEGORY")
         let apns = Apns.init(aps: aps, coordinates: coord)
         let notification = Notifications.init(interests: ["AlzhApp"], apns: apns)
     
