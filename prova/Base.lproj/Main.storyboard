@@ -32,7 +32,7 @@
                                 <nil key="highlightedColor"/>
                                 <size key="shadowOffset" width="0.0" height="2"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ciao" translatesAutoresizingMaskIntoConstraints="NO" id="erY-E6-j60">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="erY-E6-j60">
                                 <rect key="frame" x="152" y="20" width="70" height="70"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="70" id="Gk1-Z5-2C4"/>
@@ -100,14 +100,14 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="boh" translatesAutoresizingMaskIntoConstraints="NO" id="8zK-ze-aa6">
-                                <rect key="frame" x="0.0" y="20" width="375" height="128"/>
+                                <rect key="frame" x="0.0" y="20" width="375" height="130"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="130" id="R7m-lt-ngt"/>
                                     <constraint firstAttribute="width" constant="375" id="q7g-fI-u1L"/>
                                 </constraints>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="paj-Hj-PoE">
-                                <rect key="frame" x="140" y="464" width="92" height="33"/>
+                                <rect key="frame" x="140" y="466" width="92" height="33"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="92" id="8zV-PJ-BiD"/>
                                     <constraint firstAttribute="height" constant="33" id="GQ1-8l-4zW"/>
@@ -121,7 +121,7 @@
                                 </connections>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fEU-gf-yxd">
-                                <rect key="frame" x="54" y="221" width="265" height="31"/>
+                                <rect key="frame" x="54" y="223" width="265" height="31"/>
                                 <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="31" id="DOx-jL-4ut"/>
@@ -135,7 +135,7 @@
                                 </connections>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Surname" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Yq5-rx-p5c">
-                                <rect key="frame" x="54" y="280" width="265" height="31"/>
+                                <rect key="frame" x="54" y="282" width="265" height="31"/>
                                 <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="265" id="Kqi-Cj-9AV"/>
@@ -149,7 +149,7 @@
                                 </connections>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Address" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="e9o-E4-b10">
-                                <rect key="frame" x="54" y="340" width="265" height="31"/>
+                                <rect key="frame" x="54" y="342" width="265" height="31"/>
                                 <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="31" id="9lN-NV-KkC"/>
@@ -162,15 +162,15 @@
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="2yu-m5-B4g"/>
                                 </connections>
                             </textField>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ciao" translatesAutoresizingMaskIntoConstraints="NO" id="tCs-jZ-ihk">
-                                <rect key="frame" x="152" y="25" width="70" height="68"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="tCs-jZ-ihk">
+                                <rect key="frame" x="152" y="25" width="70" height="70"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="70" id="2cf-hi-vnh"/>
                                     <constraint firstAttribute="height" constant="70" id="OVM-B5-qDH"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="AlzhApp" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sUA-dP-hhy">
-                                <rect key="frame" x="140" y="92" width="96" height="56"/>
+                                <rect key="frame" x="140" y="92" width="96" height="58"/>
                                 <fontDescription key="fontDescription" name="HoeflerText-Italic" family="Hoefler Text" pointSize="25"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -397,7 +397,7 @@
                                     <constraint firstAttribute="height" constant="85" id="q0V-zw-gyW"/>
                                 </constraints>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ciao" translatesAutoresizingMaskIntoConstraints="NO" id="Tnf-9m-2di">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="Tnf-9m-2di">
                                 <rect key="frame" x="162" y="20" width="50" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="VC1-bt-gyt"/>
@@ -413,7 +413,7 @@
                             </mapView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="AlzhApp" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="521-LM-SM7">
                                 <rect key="frame" x="151" y="64" width="73" height="41"/>
-                                <fontDescription key="fontDescription" name="HoeflerText-Italic" family="Hoefler Text" pointSize="16"/>
+                                <fontDescription key="fontDescription" name="HoeflerText-Italic" family="Hoefler Text" pointSize="15"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                                 <size key="shadowOffset" width="0.0" height="2"/>
@@ -504,12 +504,12 @@
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="AlzhApp" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rUt-2P-fZR">
                                 <rect key="frame" x="151" y="64" width="73" height="41"/>
-                                <fontDescription key="fontDescription" name="HoeflerText-Italic" family="Hoefler Text" pointSize="16"/>
+                                <fontDescription key="fontDescription" name="HoeflerText-Italic" family="Hoefler Text" pointSize="15"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                                 <size key="shadowOffset" width="0.0" height="2"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ciao" translatesAutoresizingMaskIntoConstraints="NO" id="Dxm-yL-j0I">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="Dxm-yL-j0I">
                                 <rect key="frame" x="162" y="20" width="50" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="50" id="dBp-EV-LgU"/>
@@ -705,7 +705,7 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <items>
-                                    <navigationItem title="Contact Information" id="Ps3-yP-D6F"/>
+                                    <navigationItem title="Tutors" id="Ps3-yP-D6F"/>
                                 </items>
                             </navigationBar>
                         </subviews>
@@ -905,7 +905,7 @@
     <resources>
         <image name="avatar" width="51.200000762939453" height="51.200000762939453"/>
         <image name="boh" width="91.199996948242188" height="31.200000762939453"/>
-        <image name="ciao" width="62.400001525878906" height="62.400001525878906"/>
+        <image name="logo" width="122.5" height="122.5"/>
         <image name="placeholder" width="41.513511657714844" height="41.513511657714844"/>
         <image name="user" width="47.201023101806641" height="47.201023101806641"/>
     </resources>
