@@ -18,7 +18,7 @@ struct Address: Codable {
 }
 
 struct Coord: Codable {
-    var lat, lon: CLLocationDegrees
+    var lat, lon: Double
 }
 
 

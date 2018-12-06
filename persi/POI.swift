@@ -10,22 +10,13 @@ import Foundation
 
 import MapKit
 
+typealias SafePoints = [SafeArea]
 
-struct POIOfInterest: Codable{
-    var p: POI?
-}
-struct POI: Codable{
-    var namePOI: String
-    var addrPOI: Addr
-    
+struct SafeArea: Codable {
+    var p: POI
 }
 
-struct Addr: Codable{
-    var text: String
-    var coordPOI: Coord
+struct POI: Codable {
+    var name: String
+    var address: Address
 }
-
-struct Coord2: Codable {
-    var lat, lon: CLLocationDegrees
-}
-

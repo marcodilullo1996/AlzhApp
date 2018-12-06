@@ -16,11 +16,9 @@ class ViewController: UIViewController, UITextFieldDelegate {
     
     var db = Database.shared
 
-    
     var address = ""
     var name = ""
     var surname = ""
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -57,8 +55,6 @@ class ViewController: UIViewController, UITextFieldDelegate {
                 db.patient.user = u
                 db.save(element: db.patient, forKey: "Patient")
                 print(db.patient.user.firstname)
-                
-                
                 
                 performSegue(withIdentifier: "passInformation", sender: self)
             }

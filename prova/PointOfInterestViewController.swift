@@ -13,68 +13,7 @@ import CoreLocation
 import PushNotifications
 import Foundation
 
-class PointOfInterestViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
-    
-//    -----------------
-    let pushNotifications = PushNotifications.shared
-    let instanceID = "d34ad54c-7107-4c4f-ba63-d3d87e034acd"
-    let token = "3B726F93039CC4C283AE419A9525850F998F17CE49A310D023D959EB82AC980E"
-    
-    var json = """
-{
-    "interests": [
-        "AlzhApp"
-    ],
-    "apns": {
-        "aps": {
-            "alert": {
-                "title": "Hello",
-                "body": "Hello, world!"
-            },
-            "badge": 1,
-            "category": "MAP_CATEGORY"
-        },
-        "coordinates": {
-            "lat": 2.3,
-            "lon": 3.2
-        }
-    }
-}
-"""
-    
-    
-    func displayAlert() {
-        
-    }
-    
-    @IBAction func sendPosition(_ sender: Any) {
-        var request = URLRequest(url: URL(string: "https://\(instanceID).pushnotifications.pusher.com/publish_api/v1/instances/\(instanceID)/publishes")!)
-        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-        request.setValue( "Bearer \(token)", forHTTPHeaderField: "Authorization")
-        
-        request.httpMethod = "POST"
-        
-        request.httpBody = json.data(using: .utf8)
-        
-        let task = URLSession.shared.dataTask(with: request) { data, response, error in
-            guard let data = data, error == nil else {
-                print(error?.localizedDescription ?? "No data")
-                return
-            }
-            let responseJSON = try? JSONSerialization.jsonObject(with: data, options: [])
-            if let responseJSON = responseJSON as? [String: Any] {
-                print(responseJSON)
-            }
-        }
-        
-        task.resume()
-    }
-//    ---------------
-    
-    
-    
-    
-
+class PointOfInterestViewController: UIViewController, CLLocationManagerDelegate, UITextFieldDelegate {
 
     var locationManager: CLLocationManager!
     var userPosition: CLLocationCoordinate2D!
@@ -84,9 +23,6 @@ class PointOfInterestViewController: UIViewController, CLLocationManagerDelegate
     @IBOutlet weak var idPOITextField: UITextField!
     @IBOutlet weak var addressPOITextField: UITextField!
     
-    
-    
-    
     var idPOI = ""
     var addressPOI = ""
     
@@ -94,7 +30,6 @@ class PointOfInterestViewController: UIViewController, CLLocationManagerDelegate
     var range: CLLocationDistance?
     
     var geocoder = CLGeocoder()
-
 
     let db = Database.shared
     
@@ -104,7 +39,6 @@ class PointOfInterestViewController: UIViewController, CLLocationManagerDelegate
         idPOITextField.setBottomBorder(withColor: .black)
         addressPOITextField.setBottomBorder(withColor: .black)
         
-        
         locationManager = CLLocationManager() //INizializziamo location manager
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters //Accuratezza desiderata
@@ -113,73 +47,57 @@ class PointOfInterestViewController: UIViewController, CLLocationManagerDelegate
         
         coordinates = CLLocationCoordinate2D(latitude: db.patient.user.address!.coord.lat, longitude: db.patient.user.address!.coord.lon)
 
-        range =  db.patient.user.address!.range as CLLocationDistance
+        range = db.patient.user.address!.range as CLLocationDistance
 
         var region: MKCoordinateRegion = mapPOI.region
 
         region.center.latitude = (coordinates?.latitude)!
         region.center.longitude = (coordinates?.longitude)!
         
-        region.span = MKCoordinateSpan(latitudeDelta: 0.4, longitudeDelta: 0.4)
+        region.span = MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01)
         
         mapPOI.setRegion(region, animated: true)
-    
-        let region2 = CLCircularRegion(center: coordinates!, radius: range!, identifier: "geofence")
+        
+        let homeGeofence = locationManager.monitoredRegions.first as! CLCircularRegion
         mapPOI.removeOverlays(mapPOI.overlays)
-        locationManager.startMonitoring(for: region2)
-        let circle = MKCircle(center: coordinates!, radius: region2.radius)
+        let circle = MKCircle(center: homeGeofence.center, radius: homeGeofence.radius)
         
         mapPOI.addOverlay(circle)
         
         let annotation = MKPointAnnotation()
         annotation.coordinate = coordinates!
+        annotation.title = "My home"
         mapPOI.addAnnotation(annotation)
-        
-        
-        
-        
         
         // Do any additional setup after loading the view.
     }
     
     
-    @IBAction func addPOI(_ sender: Any)
-    {
+    @IBAction func addPOI(_ sender: Any) {
         idPOI = idPOITextField.text!
         addressPOI = addressPOITextField.text!
         
-        print(idPOI)
-        print(addressPOI)
-        
-        var pCoord = Coord(lat: 1.0, lon: 1.0)
-        var pAddr = Addr(text: addressPOI, coordPOI: pCoord )
-        var po = POI(namePOI: idPOI, addrPOI: pAddr)
-        
-        db.POI.p = po
-        db.save(element: db.POI, forKey: "POI")
-        
         getCoordinates()
-        
-        
-        print()
-        
-        
-        
-        
-        
-//        let c = Coord(lat: 1.1, lon: 3.2)
-//        let p = POI(addr: pointOI, poiCoord: Coord)
-//
-//        print(pointOI)
-//
-//
-//        getCoordinates()
         
     }
     
     
     func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
         guard let circleOverlay = overlay as? MKCircle else { return MKOverlayRenderer() }
+        for region in locationManager.monitoredRegions {
+            let circularRegion = region as? CLCircularRegion
+            if circleOverlay.coordinate.latitude == circularRegion!.center.latitude,
+                circleOverlay.coordinate.longitude == circularRegion!.center.longitude, !(circularRegion?.identifier.starts(with: "myhome"))! {
+                    
+                let circleRenderer = MKCircleRenderer(circle: circleOverlay)
+                circleRenderer.strokeColor = .blue
+                circleRenderer.fillColor = .blue
+                circleRenderer.alpha = 0.5
+                
+                return circleRenderer
+            }
+        }
+        
         let circleRenderer = MKCircleRenderer(circle: circleOverlay)
         circleRenderer.strokeColor = .red
         circleRenderer.fillColor = .red
@@ -205,29 +123,74 @@ class PointOfInterestViewController: UIViewController, CLLocationManagerDelegate
     }
     
     func getCoordinates() {
-        geocoder.geocodeAddressString(db.POI.p!.addrPOI.text) {
+        geocoder.geocodeAddressString(addressPOI) {
             [weak self] placemarks, error in
             guard let strongSelf = self else { return }
             
             let placemark = placemarks?.first
-            strongSelf.db.POI.p?.addrPOI.coordPOI.lat = (placemark?.location?.coordinate.latitude)!
-            strongSelf.db.POI.p?.addrPOI.coordPOI.lon = (placemark?.location?.coordinate.longitude)!
             
+            strongSelf.coordinates = CLLocationCoordinate2D(
+                latitude: (placemark?.location?.coordinate.latitude)!,
+                longitude: (placemark?.location?.coordinate.longitude)!
+            )
+            
+            let coord = Coord.init(
+                lat: (strongSelf.coordinates?.latitude)!,
+                lon: (strongSelf.coordinates?.longitude)!
+            )
+            
+            let address = Address.init(text: strongSelf.addressPOI, coord: coord, range: 10)
+            let safePOI = POI.init(name: strongSelf.idPOI, address: address)
+            let safeZone = SafeArea.init(p: safePOI)
+            
+            strongSelf.db.POIs.append(safeZone)
+            strongSelf.db.save(element: strongSelf.db.POIs, forKey: "POI")
             
             var region: MKCoordinateRegion = strongSelf.mapPOI.region
-            region.center.latitude = (placemark?.location?.coordinate.latitude)!
-            region.center.longitude = (placemark?.location?.coordinate.longitude)!
+            region.center.latitude = (strongSelf.coordinates?.latitude)!
+            region.center.longitude = (strongSelf.coordinates?.longitude)!
             
-            region.span = MKCoordinateSpan(latitudeDelta: 0.4, longitudeDelta: 0.4)
-            
+            region.span = MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01)
             strongSelf.mapPOI.setRegion(region, animated: true)
             
+            let annotation = MKPointAnnotation()
+            annotation.coordinate = strongSelf.coordinates!
+            strongSelf.mapPOI.addAnnotation(annotation)
+            
+            let circularRegion = CLCircularRegion(center: region.center, radius: 10, identifier: strongSelf.idPOI + "-geofence")
+            strongSelf.locationManager.startMonitoring(for: circularRegion)
+            let circleOverlay = MKCircle(center: circularRegion.center, radius: circularRegion.radius)
+            strongSelf.mapPOI.addOverlay(circleOverlay)
             
         }
     }
 }
 
-
+extension PointOfInterestViewController: MKMapViewDelegate {
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        if annotation.coordinate.latitude == coordinates?.latitude, annotation.coordinate.longitude == coordinates?.longitude {
+            if annotation is MKPointAnnotation {
+                let pinAnnotationView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: "safeZone1")
+                
+                pinAnnotationView.isDraggable = true
+                pinAnnotationView.canShowCallout = true
+                
+                return pinAnnotationView
+            }
+        }
+        
+        return nil
+    }
+    
+    func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, didChange newState: MKAnnotationView.DragState, fromOldState oldState: MKAnnotationView.DragState) {
+        if view.reuseIdentifier == "safeZone1" {
+            if newState == .ending {
+                coordinates?.latitude = (view.annotation?.coordinate.latitude)!
+                coordinates?.longitude = (view.annotation?.coordinate.longitude)!
+            }
+        }
+    }
+}
 
 
 
