@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<VariablesViewState
+   version = "1.0">
+   <ContextStates>
+      <ContextState
+         contextName = "MapsViewController.viewDidLoad():MapsViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "locationManager.monitoredRegions.count">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "MapsViewController.mapView(_:rendererFor:):MapsViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "(circularRegion?.identifier)!">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+   </ContextStates>
+</VariablesViewState>
