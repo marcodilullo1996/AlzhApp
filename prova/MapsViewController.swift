@@ -11,9 +11,11 @@ import UIKit
 import MapKit
 
 
-class MapsViewController: UITabBarController, MKMapViewDelegate, CLLocationManagerDelegate{
+class MapsViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate{
     
     @IBOutlet var MapView: UIView! = MKMapView()
+    
+    var  userLocation: CLLocationCoordinate2D
     
     override func viewDidLoad() {
         super.viewDidLoad()

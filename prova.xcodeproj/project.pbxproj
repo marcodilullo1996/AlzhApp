@@ -12,6 +12,7 @@
 		8F1DA6C821B6EF7800546DC2 /* PushNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8F1DA6C721B6EF7800546DC2 /* PushNotifications.framework */; };
 		8F6EFE5221B811B600A4ABD7 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F6EFE5121B811B600A4ABD7 /* MainTabBarController.swift */; };
 		8F6EFE5421B835CD00A4ABD7 /* MapsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F6EFE5321B835CD00A4ABD7 /* MapsViewController.swift */; };
+		8F6EFE5621B940DA00A4ABD7 /* ChoiceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F6EFE5521B940DA00A4ABD7 /* ChoiceViewController.swift */; };
 		A06F12F8CAA8DC2798CB39FD /* Pods_prova.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 246169A5530511F3E3E8ACE3 /* Pods_prova.framework */; };
 		AB12EC9D21B2C538008BEC5D /* Geotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB12EC9C21B2C538008BEC5D /* Geotification.swift */; };
 		AB12ECA121B300D2008BEC5D /* PointOfInterestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB12ECA021B300D2008BEC5D /* PointOfInterestViewController.swift */; };
@@ -38,6 +39,7 @@
 		8F1DA6C721B6EF7800546DC2 /* PushNotifications.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = PushNotifications.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8F6EFE5121B811B600A4ABD7 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		8F6EFE5321B835CD00A4ABD7 /* MapsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapsViewController.swift; sourceTree = "<group>"; };
+		8F6EFE5521B940DA00A4ABD7 /* ChoiceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChoiceViewController.swift; sourceTree = "<group>"; };
 		A4F3566E79C4AB4BB42152C1 /* Pods-prova.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-prova.release.xcconfig"; path = "Pods/Target Support Files/Pods-prova/Pods-prova.release.xcconfig"; sourceTree = "<group>"; };
 		AB12EC9C21B2C538008BEC5D /* Geotification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Geotification.swift; sourceTree = "<group>"; };
 		AB12ECA021B300D2008BEC5D /* PointOfInterestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointOfInterestViewController.swift; sourceTree = "<group>"; };
@@ -119,6 +121,7 @@
 				AB7913E121ADA98500428D7A /* AppDelegate.swift */,
 				AB55673A21B19C0B00CAFE87 /* ViewController.swift */,
 				AB7913E521ADA98500428D7A /* Main.storyboard */,
+				8F6EFE5521B940DA00A4ABD7 /* ChoiceViewController.swift */,
 				8F6EFE5321B835CD00A4ABD7 /* MapsViewController.swift */,
 				8F6EFE5121B811B600A4ABD7 /* MainTabBarController.swift */,
 				AB7913E821ADA98700428D7A /* Assets.xcassets */,
@@ -284,6 +287,7 @@
 				AB5F40E521B3052000141D03 /* InfoTabViewController.swift in Sources */,
 				8F1DA6C221B6E2C500546DC2 /* Notifications.swift in Sources */,
 				AB7913E221ADA98500428D7A /* AppDelegate.swift in Sources */,
+				8F6EFE5621B940DA00A4ABD7 /* ChoiceViewController.swift in Sources */,
 				AB9EE36221B2982100EDC731 /* RangeViewController.swift in Sources */,
 				AB12EC9D21B2C538008BEC5D /* Geotification.swift in Sources */,
 				AB60360421B5820B0028492D /* Database.swift in Sources */,

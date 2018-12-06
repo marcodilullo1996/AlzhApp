@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="fNO-ZM-S20">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -10,6 +10,84 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--Choice View Controller-->
+        <scene sceneID="1Ji-mz-iqK">
+            <objects>
+                <viewController id="fNO-ZM-S20" customClass="ChoiceViewController" customModule="prova" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="grM-ea-C4U">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="boh" translatesAutoresizingMaskIntoConstraints="NO" id="Ox3-jJ-Dsu">
+                                <rect key="frame" x="0.0" y="20" width="375" height="130"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="375" id="HWV-cf-4xM"/>
+                                    <constraint firstAttribute="height" constant="130" id="PzI-mS-bGE"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="AlzhApp" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Um-Km-Xlx">
+                                <rect key="frame" x="139" y="92" width="96" height="56"/>
+                                <fontDescription key="fontDescription" name="Zapfino" family="Zapfino" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                                <size key="shadowOffset" width="0.0" height="2"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ciao" translatesAutoresizingMaskIntoConstraints="NO" id="erY-E6-j60">
+                                <rect key="frame" x="152" y="20" width="70" height="70"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="70" id="Gk1-Z5-2C4"/>
+                                    <constraint firstAttribute="height" constant="70" id="YJg-uM-nsv"/>
+                                </constraints>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DzD-jY-Yf7">
+                                <rect key="frame" x="75" y="279" width="225" height="57"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.37254901960784315" green="0.55686274509803924" blue="0.82745098039215681" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="22"/>
+                                <state key="normal" title="Patient">
+                                    <color key="titleColor" red="0.99519230769230771" green="0.99038461538461542" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="layer.borderColor">
+                                        <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <segue destination="BYZ-38-t0r" kind="show" id="Wza-mc-yUr"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0ZF-Nq-wOE">
+                                <rect key="frame" x="75" y="385" width="225" height="57"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.37254901960784315" green="0.55686274509803924" blue="0.82745098039215681" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="22"/>
+                                <state key="normal" title="Tutor">
+                                    <color key="titleColor" red="0.99519230769230771" green="0.99038461538461542" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                </state>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="erY-E6-j60" firstAttribute="leading" secondItem="fbI-XS-4eB" secondAttribute="leading" constant="152" id="3bs-WH-lre"/>
+                            <constraint firstItem="0Um-Km-Xlx" firstAttribute="top" secondItem="fbI-XS-4eB" secondAttribute="top" constant="72" id="DTX-ze-hFn"/>
+                            <constraint firstItem="fbI-XS-4eB" firstAttribute="trailing" secondItem="0Um-Km-Xlx" secondAttribute="trailing" constant="140" id="Epl-vp-JQY"/>
+                            <constraint firstItem="fbI-XS-4eB" firstAttribute="bottom" secondItem="erY-E6-j60" secondAttribute="bottom" constant="577" id="O9l-mi-xsu"/>
+                            <constraint firstItem="erY-E6-j60" firstAttribute="top" secondItem="fbI-XS-4eB" secondAttribute="top" id="a3N-MP-DoC"/>
+                            <constraint firstItem="fbI-XS-4eB" firstAttribute="trailing" secondItem="erY-E6-j60" secondAttribute="trailing" constant="153" id="jKl-gk-ZOQ"/>
+                            <constraint firstItem="0Um-Km-Xlx" firstAttribute="leading" secondItem="fbI-XS-4eB" secondAttribute="leading" constant="139" id="kKT-39-c53"/>
+                            <constraint firstItem="fbI-XS-4eB" firstAttribute="bottom" secondItem="0Um-Km-Xlx" secondAttribute="bottom" constant="519" id="l5O-w9-oTG"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="fbI-XS-4eB"/>
+                    </view>
+                    <connections>
+                        <outlet property="PatientButton" destination="DzD-jY-Yf7" id="gxD-fM-hIV"/>
+                        <outlet property="TutorButton" destination="0ZF-Nq-wOE" id="aTe-QZ-k0F"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="sWD-t7-ewY" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-901.60000000000002" y="61.619190404797607"/>
+        </scene>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
@@ -317,9 +395,6 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                                 <state key="normal" title="Send message"/>
-                                <connections>
-                                    <action selector="sendPosition:" destination="uNQ-Y6-Kvi" eventType="touchUpInside" id="qe0-lN-U6D"/>
-                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5G5-Ir-yHv">
                                 <rect key="frame" x="169" y="546" width="38" height="33"/>
@@ -401,10 +476,10 @@
             </objects>
             <point key="canvasLocation" x="3052" y="42.728635682158924"/>
         </scene>
-        <!--Main Tab Bar Controller-->
+        <!--MainTabBarController-->
         <scene sceneID="dZP-5E-GWp">
             <objects>
-                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="LNd-7P-OeM" customClass="MainTabBarController" customModule="prova" customModuleProvider="target" sceneMemberID="viewController">
+                <tabBarController title="MainTabBarController" automaticallyAdjustsScrollViewInsets="NO" id="LNd-7P-OeM" customClass="MainTabBarController" customModule="prova" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="9nW-vw-ghX">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
@@ -439,6 +514,9 @@
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="Ibg-h5-1JS">
                                 <rect key="frame" x="0.0" y="113" width="375" height="505"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <connections>
+                                    <outlet property="delegate" destination="gT4-qn-2ML" id="fbc-Sf-n8y"/>
+                                </connections>
                             </mapView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -497,4 +575,7 @@
         <image name="ciao" width="62.400001525878906" height="62.400001525878906"/>
         <image name="placeholder" width="41.513511657714844" height="41.513511657714844"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="Wza-mc-yUr"/>
+    </inferredMetricsTieBreakers>
 </document>
