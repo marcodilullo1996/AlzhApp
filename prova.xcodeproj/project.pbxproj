@@ -184,6 +184,14 @@
 			path = Categories;
 			sourceTree = "<group>";
 		};
+		7D2B5B8A21B9982B0050F49D /* Test Locations */ = {
+			isa = PBXGroup;
+			children = (
+				8F4B3E7E21B9944A00086C95 /* TestLocations.gpx */,
+			);
+			path = "Test Locations";
+			sourceTree = "<group>";
+		};
 		817F8521406A94D2D10D83E8 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -227,7 +235,7 @@
 		AB7913E021ADA98500428D7A /* prova */ = {
 			isa = PBXGroup;
 			children = (
-				8F4B3E7E21B9944A00086C95 /* TestLocations.gpx */,
+				7D2B5B8A21B9982B0050F49D /* Test Locations */,
 				8F1DA6C421B6E45E00546DC2 /* prova.entitlements */,
 				8F1DA6C321B6E43D00546DC2 /* PushNotificationsExample.entitlements */,
 				AB7913E121ADA98500428D7A /* AppDelegate.swift */,
