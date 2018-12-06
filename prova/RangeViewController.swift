@@ -76,7 +76,9 @@ class RangeViewController: UIViewController, CLLocationManagerDelegate, UITextFi
     }
     
     @IBAction func nextButton(_ sender: Any) {
-        performSegue(withIdentifier: "goToPOI", sender: self)
+        if mapRange.overlays.count > 0 {
+            performSegue(withIdentifier: "goToPOI", sender: self)
+        }
     }
     
     func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {

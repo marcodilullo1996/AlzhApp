@@ -457,7 +457,6 @@
                                 <state key="normal" title="Next"/>
                                 <connections>
                                     <action selector="nextButton:" destination="v6c-Ob-uMK" eventType="touchUpInside" id="5TT-RH-DR8"/>
-                                    <segue destination="uNQ-Y6-Kvi" kind="show" identifier="goToPOI" id="TQH-Im-Cbp"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -481,11 +480,12 @@
                     <connections>
                         <outlet property="mapRange" destination="juJ-26-8Dm" id="aUo-kS-tEo"/>
                         <outlet property="rangeTextField" destination="CLT-Dg-V4k" id="baq-M2-3Qh"/>
+                        <segue destination="uNQ-Y6-Kvi" kind="show" identifier="goToPOI" id="R9M-95-P09"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="d4E-po-zna" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1800.8" y="42.728635682158924"/>
+            <point key="canvasLocation" x="1887" y="43"/>
         </scene>
         <!--Point Of Interest View Controller-->
         <scene sceneID="B30-FU-oqA">
