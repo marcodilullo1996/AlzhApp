@@ -100,14 +100,14 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="boh" translatesAutoresizingMaskIntoConstraints="NO" id="8zK-ze-aa6">
-                                <rect key="frame" x="0.0" y="20" width="375" height="128"/>
+                                <rect key="frame" x="0.0" y="20" width="375" height="130"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="130" id="R7m-lt-ngt"/>
                                     <constraint firstAttribute="width" constant="375" id="q7g-fI-u1L"/>
                                 </constraints>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="paj-Hj-PoE">
-                                <rect key="frame" x="140" y="464" width="92" height="33"/>
+                                <rect key="frame" x="140" y="466" width="92" height="33"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="92" id="8zV-PJ-BiD"/>
                                     <constraint firstAttribute="height" constant="33" id="GQ1-8l-4zW"/>
@@ -121,7 +121,7 @@
                                 </connections>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fEU-gf-yxd">
-                                <rect key="frame" x="54" y="221" width="265" height="31"/>
+                                <rect key="frame" x="54" y="223" width="265" height="31"/>
                                 <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="31" id="DOx-jL-4ut"/>
@@ -135,7 +135,7 @@
                                 </connections>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Surname" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Yq5-rx-p5c">
-                                <rect key="frame" x="54" y="280" width="265" height="31"/>
+                                <rect key="frame" x="54" y="282" width="265" height="31"/>
                                 <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="265" id="Kqi-Cj-9AV"/>
@@ -149,7 +149,7 @@
                                 </connections>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Address" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="e9o-E4-b10">
-                                <rect key="frame" x="54" y="340" width="265" height="31"/>
+                                <rect key="frame" x="54" y="342" width="265" height="31"/>
                                 <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="31" id="9lN-NV-KkC"/>
@@ -163,14 +163,14 @@
                                 </connections>
                             </textField>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ciao" translatesAutoresizingMaskIntoConstraints="NO" id="tCs-jZ-ihk">
-                                <rect key="frame" x="152" y="25" width="70" height="68"/>
+                                <rect key="frame" x="152" y="25" width="70" height="70"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="70" id="2cf-hi-vnh"/>
                                     <constraint firstAttribute="height" constant="70" id="OVM-B5-qDH"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="AlzhApp" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sUA-dP-hhy">
-                                <rect key="frame" x="140" y="92" width="96" height="56"/>
+                                <rect key="frame" x="140" y="92" width="96" height="58"/>
                                 <fontDescription key="fontDescription" name="HoeflerText-Italic" family="Hoefler Text" pointSize="25"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -910,6 +910,6 @@
         <image name="user" width="47.201023101806641" height="47.201023101806641"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="OHE-6g-Ytm"/>
+        <segue reference="Wza-mc-yUr"/>
     </inferredMetricsTieBreakers>
 </document>
