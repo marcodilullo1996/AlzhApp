@@ -17,10 +17,14 @@ class ChoiceViewController: UIViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        PatientButton.backgroundColor = .clear
         PatientButton.layer.cornerRadius = 5
         PatientButton.layer.borderWidth = 1
-        PatientButton.layer.borderColor = UIColor.black.cgColor
+        PatientButton.layer.borderColor = UIColor.white.cgColor
+        
+        TutorButton.layer.cornerRadius = 5
+        TutorButton.layer.borderWidth = 1
+        TutorButton.layer.borderColor = UIColor.white.cgColor
+        
 
     }
     
