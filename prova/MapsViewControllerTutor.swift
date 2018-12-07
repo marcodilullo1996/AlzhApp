@@ -22,6 +22,15 @@ class MapsViewControllerTutor: UIViewController, MKMapViewDelegate, CLLocationMa
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let span = MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05)
+        let region = MKCoordinateRegion(center: userLocation!, span: span)
+        mapView.setRegion(region, animated: true)
+        
+        let annotation = MKPointAnnotation()
+        annotation.coordinate = userLocation!
+        annotation.title = "Patient"
+        mapView.addAnnotation(annotation)
     }
     
 }

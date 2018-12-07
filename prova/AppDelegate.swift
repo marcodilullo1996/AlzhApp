@@ -86,8 +86,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         switch response.notification.request.content.categoryIdentifier {
         case "MAP_CATEGORY":
             let sb = UIStoryboard(name: "Main", bundle: nil)
-            let mapViewController = sb.instantiateViewController(withIdentifier: "MainTabBarController") as! MainTabBarController
-            mapViewController.selectedIndex = 1
+            let mapViewController = sb.instantiateViewController(withIdentifier: "MapsViewControllerTuto") as! MapsViewControllerTutor
+            mapViewController.userLocation = CLLocationCoordinate2D(latitude: 40.822975, longitude: 14.216647)
             window?.rootViewController = mapViewController
         default:
             break

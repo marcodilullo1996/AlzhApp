@@ -745,10 +745,10 @@
             </objects>
             <point key="canvasLocation" x="3991" y="1668"/>
         </scene>
-        <!--MapsViewControllerTutor-->
+        <!--MapsViewControllerTuto-->
         <scene sceneID="tTR-Fh-5yM">
             <objects>
-                <viewController storyboardIdentifier="MapsViewControllerTuto" title="MapsViewControllerTutor" id="Pnm-KX-KEg" customClass="MapsViewControllerTutor" customModule="prova" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MapsViewControllerTuto" title="MapsViewControllerTuto" id="Pnm-KX-KEg" customClass="MapsViewControllerTutor" customModule="prova" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Wvt-ai-fRQ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
