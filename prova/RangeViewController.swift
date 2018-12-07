@@ -15,6 +15,7 @@ class RangeViewController: UIViewController, CLLocationManagerDelegate, UITextFi
 
     @IBOutlet weak var rangeTextField: UITextField!
     @IBOutlet weak var mapRange: MKMapView!
+    @IBOutlet weak var setSafeAreaButton: UIButton!
     
     var locationManager: CLLocationManager!
     
@@ -38,6 +39,7 @@ class RangeViewController: UIViewController, CLLocationManagerDelegate, UITextFi
         locationManager.startUpdatingLocation()
         
         getCoordinates()
+//        setSafeAreaButton.isEnabled = false
 
     }
     
@@ -45,38 +47,65 @@ class RangeViewController: UIViewController, CLLocationManagerDelegate, UITextFi
     
     @IBAction func showRegion(_ sender: Any) {
         
-        range = Double(rangeTextField.text!)
-        
-        db.patient.user.address?.range = range!
-
-        //coordinates.latitude = (db.patient.user.address!.coord.lat)
-        //coordinates!.longitude = (db.patient.user.address!.coord.lon)
-//        coordinates = CLLocationCoordinate2D(latitude: db.patient.user.address!.coord.lat, longitude: db.patient.user.address!.coord.lon)
-//        coordinates!.latitude =  db.patient.user.address!.coord.lat
-//        coordinates!.longitude = db.patient.user.address!.coord.lon
-    
-        if let coord = coordinates {
-            db.patient.user.address?.coord.lat = coord.latitude
-            db.patient.user.address?.coord.lon = coord.longitude
+        guard rangeTextField.text != "" else {
+            let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 30, height: 20))
+            imageView.image = #imageLiteral(resourceName: "warning")
+            imageView.contentMode = .scaleAspectFit
+            rangeTextField.rightView = imageView
             
-            let region = CLCircularRegion(center: coordinates! , radius: range!, identifier: "myhome-geofence")
-            mapRange.removeOverlays(mapRange.overlays)
-            locationManager.startMonitoring(for: region)
-            let circle = MKCircle(center: coordinates!, radius: region.radius)
-            
-            mapRange.addOverlay(circle)
-            db.save(element: db.patient, forKey: "Patient")
-        } else {
-            let alert = UIAlertController(title: "Position error", message: "Specified location is unvailable", preferredStyle: .alert)
-            present(alert, animated: true, completion: nil)
+            rangeTextField.placeholder = "Range required"
+            rangeTextField.rightViewMode = .always
+            return
         }
         
+        if !(rangeTextField.text!.isEmpty) {
+    
+            range = Double(rangeTextField.text!)
+            
+            
+            db.patient.user.address?.range = range!
+            
+            //coordinates.latitude = (db.patient.user.address!.coord.lat)
+            //coordinates!.longitude = (db.patient.user.address!.coord.lon)
+            //        coordinates = CLLocationCoordinate2D(latitude: db.patient.user.address!.coord.lat, longitude: db.patient.user.address!.coord.lon)
+            //        coordinates!.latitude =  db.patient.user.address!.coord.lat
+            //        coordinates!.longitude = db.patient.user.address!.coord.lon
+            
+            if let coord = coordinates {
+                db.patient.user.address?.coord.lat = coord.latitude
+                db.patient.user.address?.coord.lon = coord.longitude
+                
+                let region = CLCircularRegion(center: coordinates! , radius: range!, identifier: "myhome-geofence")
+                mapRange.removeOverlays(mapRange.overlays)
+                locationManager.startMonitoring(for: region)
+                let circle = MKCircle(center: coordinates!, radius: region.radius)
+                
+                mapRange.addOverlay(circle)
+                db.save(element: db.patient, forKey: "Patient")
+            } else {
+                let alert = UIAlertController(title: "Position error", message: "Specified location is unvailable", preferredStyle: .alert)
+                present(alert, animated: true, completion: nil)
+            }
         
+        }
        
     }
     
     @IBAction func nextButton(_ sender: Any) {
-        performSegue(withIdentifier: "goToPOI", sender: self)
+        guard rangeTextField.text != "" else {
+            let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 30, height: 20))
+            imageView.image = #imageLiteral(resourceName: "warning")
+            imageView.contentMode = .scaleAspectFit
+            rangeTextField.rightView = imageView
+            
+            rangeTextField.placeholder = "Range required"
+            rangeTextField.rightViewMode = .always
+            return
+        }
+        
+        if mapRange.overlays.count > 0 {
+            performSegue(withIdentifier: "goToPOI", sender: self)
+        }
     }
     
     func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {

@@ -53,7 +53,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <segue destination="BYZ-38-t0r" kind="show" id="Wza-mc-yUr"/>
+                                    <action selector="seguePatient:" destination="fNO-ZM-S20" eventType="touchUpInside" id="DF8-gL-ciX"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0ZF-Nq-wOE">
@@ -85,11 +85,13 @@
                     <connections>
                         <outlet property="PatientButton" destination="DzD-jY-Yf7" id="gxD-fM-hIV"/>
                         <outlet property="TutorButton" destination="0ZF-Nq-wOE" id="aTe-QZ-k0F"/>
+                        <segue destination="BYZ-38-t0r" kind="show" identifier="toPatientApp" id="gI7-Cb-ukh"/>
+                        <segue destination="uNQ-Y6-Kvi" kind="show" identifier="skipPatientData" id="NWg-nf-3RA"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sWD-t7-ewY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-901.60000000000002" y="61.619190404797607"/>
+            <point key="canvasLocation" x="-457" y="-769"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
@@ -100,14 +102,14 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="boh" translatesAutoresizingMaskIntoConstraints="NO" id="8zK-ze-aa6">
-                                <rect key="frame" x="0.0" y="20" width="375" height="128"/>
+                                <rect key="frame" x="0.0" y="20" width="375" height="130"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="130" id="R7m-lt-ngt"/>
                                     <constraint firstAttribute="width" constant="375" id="q7g-fI-u1L"/>
                                 </constraints>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="paj-Hj-PoE">
-                                <rect key="frame" x="140" y="464" width="92" height="33"/>
+                                <rect key="frame" x="140" y="466" width="92" height="33"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="92" id="8zV-PJ-BiD"/>
                                     <constraint firstAttribute="height" constant="33" id="GQ1-8l-4zW"/>
@@ -121,7 +123,7 @@
                                 </connections>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fEU-gf-yxd">
-                                <rect key="frame" x="54" y="221" width="265" height="31"/>
+                                <rect key="frame" x="54" y="223" width="265" height="31"/>
                                 <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="31" id="DOx-jL-4ut"/>
@@ -135,7 +137,7 @@
                                 </connections>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Surname" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Yq5-rx-p5c">
-                                <rect key="frame" x="54" y="280" width="265" height="31"/>
+                                <rect key="frame" x="54" y="282" width="265" height="31"/>
                                 <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="265" id="Kqi-Cj-9AV"/>
@@ -149,7 +151,7 @@
                                 </connections>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Address" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="e9o-E4-b10">
-                                <rect key="frame" x="54" y="340" width="265" height="31"/>
+                                <rect key="frame" x="54" y="342" width="265" height="31"/>
                                 <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="31" id="9lN-NV-KkC"/>
@@ -163,14 +165,14 @@
                                 </connections>
                             </textField>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="tCs-jZ-ihk">
-                                <rect key="frame" x="152" y="25" width="70" height="68"/>
+                                <rect key="frame" x="152" y="25" width="70" height="70"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="70" id="2cf-hi-vnh"/>
                                     <constraint firstAttribute="height" constant="70" id="OVM-B5-qDH"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="AlzhApp" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sUA-dP-hhy">
-                                <rect key="frame" x="140" y="92" width="96" height="56"/>
+                                <rect key="frame" x="140" y="92" width="96" height="58"/>
                                 <fontDescription key="fontDescription" name="HoeflerText-Italic" family="Hoefler Text" pointSize="25"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -457,7 +459,6 @@
                                 <state key="normal" title="Next"/>
                                 <connections>
                                     <action selector="nextButton:" destination="v6c-Ob-uMK" eventType="touchUpInside" id="5TT-RH-DR8"/>
-                                    <segue destination="uNQ-Y6-Kvi" kind="show" identifier="goToPOI" id="TQH-Im-Cbp"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -481,11 +482,13 @@
                     <connections>
                         <outlet property="mapRange" destination="juJ-26-8Dm" id="aUo-kS-tEo"/>
                         <outlet property="rangeTextField" destination="CLT-Dg-V4k" id="baq-M2-3Qh"/>
+                        <outlet property="setSafeAreaButton" destination="QSq-oj-6qf" id="ygb-4X-YIB"/>
+                        <segue destination="uNQ-Y6-Kvi" kind="show" identifier="goToPOI" id="R9M-95-P09"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="d4E-po-zna" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1800.8" y="42.728635682158924"/>
+            <point key="canvasLocation" x="1887" y="43"/>
         </scene>
         <!--Point Of Interest View Controller-->
         <scene sceneID="B30-FU-oqA">
@@ -573,6 +576,15 @@
                                 <state key="normal" title="Next"/>
                                 <connections>
                                     <segue destination="LNd-7P-OeM" kind="show" identifier="toTabBarController" id="bSB-z3-oW2"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fOk-V6-gWR">
+                                <rect key="frame" x="23" y="616" width="56" height="33"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                <state key="normal" title="Modify"/>
+                                <connections>
+                                    <segue destination="BYZ-38-t0r" kind="show" id="hV6-xE-gGG"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -911,6 +923,7 @@
         <image name="user" width="47.201023101806641" height="47.201023101806641"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="R9M-95-P09"/>
         <segue reference="OHE-6g-Ytm"/>
     </inferredMetricsTieBreakers>
 </document>

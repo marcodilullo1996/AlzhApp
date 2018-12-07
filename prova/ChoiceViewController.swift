@@ -13,7 +13,9 @@ class ChoiceViewController: UIViewController{
     
     @IBOutlet weak var PatientButton: UIButton!
     @IBOutlet weak var TutorButton: UIButton!
-    
+
+    var db = Database.shared
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -28,4 +30,21 @@ class ChoiceViewController: UIViewController{
 
     }
     
+    @IBAction func seguePatient(_ sender: Any) {
+        // check db consistency
+        // perform a segue or another segue depending where the user was already inserted
+        if db.patient.user.address!.text.isEmpty {
+            
+            performSegue(withIdentifier: "toPatientApp", sender: self)
+
+        } else {
+            
+            performSegue(withIdentifier: "skipPatientData", sender: self)
+
+        }
+        
+//        if !nameField.text!.isEmpty && !surnameField.text!.isEmpty && !addressField.text!.isEmpty {
+//            if !addressField.text!.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines).isEmpty {
+
+    }
 }
