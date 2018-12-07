@@ -23,6 +23,9 @@ class ViewController: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        nameField.text! = db.patient.user.firstname
+        surnameField.text! = db.patient.user.lastname
+        addressField.text! = db.patient.user.address!.text
 
 
         nameField.setBottomBorder(withColor: .black)
